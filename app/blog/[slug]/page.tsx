@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getPostBySlug, getAllPosts, formatDate } from '@/lib/blog';
+import { getBlogPostBySlug, getAllBlogPosts } from '@/lib/firebase-blog';
 
 interface Props {
   params: {
@@ -11,7 +11,7 @@ interface Props {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = getPostBySlug(params.slug);
+  const post = await getBlogPostBySlug(params.slug);
   
   if (!post) {
     return {
@@ -30,8 +30,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   ].join(', ');
 
   return {
-    title: `${post.title} - Dr. Salma Women's Health Blog`,
-    description: post.excerpt,
+    title: `${post.seoTitle || post.title} - Dr. Salma Women's Health Blog`,
+    description: post.seoDescription || post.excerpt,
     keywords: keywords,
     authors: [{ name: post.author }],
     creator: post.author,
@@ -53,19 +53,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       canonical: `https://drsalma.com/blog/${post.slug}`,
     },
     openGraph: {
-      title: post.title,
-      description: post.excerpt,
+      title: post.seoTitle || post.title,
+      description: post.seoDescription || post.excerpt,
       url: `https://drsalma.com/blog/${post.slug}`,
       siteName: 'Dr. Salma Women\'s Health',
       type: 'article',
       locale: 'en_US',
-      publishedTime: post.date,
-      modifiedTime: post.date,
+      publishedTime: post.createdAt?.toDate?.() || post.createdAt,
+      modifiedTime: post.updatedAt?.toDate?.() || post.updatedAt,
       authors: [post.author],
       tags: post.tags,
       images: post.featuredImage ? [
         {
-          url: `https://drsalma.com${post.featuredImage}`,
+          url: post.featuredImage,
           width: 1200,
           height: 630,
           alt: post.title,
@@ -81,17 +81,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: 'summary_large_image',
-      title: post.title,
-      description: post.excerpt,
-      images: post.featuredImage ? [`https://drsalma.com${post.featuredImage}`] : ['https://drsalma.com/images/salma-1.png'],
+      title: post.seoTitle || post.title,
+      description: post.seoDescription || post.excerpt,
+      images: post.featuredImage ? [post.featuredImage] : ['https://drsalma.com/images/salma-1.png'],
       creator: '@drsalma',
       site: '@drsalma',
     },
     other: {
       'article:publisher': 'https://www.facebook.com/drsalma',
       'article:author': 'https://www.facebook.com/drsalma',
-      'article:published_time': post.date,
-      'article:modified_time': post.date,
+      'article:published_time': post.createdAt?.toDate?.() || post.createdAt,
+      'article:modified_time': post.updatedAt?.toDate?.() || post.updatedAt,
       'article:section': 'Women\'s Health',
       'article:tag': post.tags.join(', '),
     },
@@ -99,14 +99,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-  const posts = getAllPosts();
+  const posts = await getAllBlogPosts();
   return posts.map((post) => ({
     slug: post.slug,
   }));
 }
 
-export default function BlogPostPage({ params }: Props) {
-  const post = getPostBySlug(params.slug);
+export default async function BlogPostPage({ params }: Props) {
+  const post = await getBlogPostBySlug(params.slug);
 
   if (!post) {
     notFound();
@@ -116,8 +116,8 @@ export default function BlogPostPage({ params }: Props) {
   const structuredData = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
-    headline: post.title,
-    description: post.excerpt,
+    headline: post.seoTitle || post.title,
+    description: post.seoDescription || post.excerpt,
     author: {
       '@type': 'Person',
       name: post.author,
@@ -133,8 +133,8 @@ export default function BlogPostPage({ params }: Props) {
         url: 'https://drsalma.com/images/logo.png',
       },
     },
-    datePublished: post.date,
-    dateModified: post.date,
+    datePublished: post.createdAt?.toDate?.() || post.createdAt,
+    dateModified: post.updatedAt?.toDate?.() || post.updatedAt,
     url: `https://drsalma.com/blog/${post.slug}`,
     mainEntityOfPage: {
       '@type': 'WebPage',
@@ -142,7 +142,7 @@ export default function BlogPostPage({ params }: Props) {
     },
     image: post.featuredImage ? {
       '@type': 'ImageObject',
-      url: `https://drsalma.com${post.featuredImage}`,
+      url: post.featuredImage,
       width: 1200,
       height: 630,
       alt: post.title,
@@ -153,7 +153,7 @@ export default function BlogPostPage({ params }: Props) {
       height: 630,
       alt: 'Dr. Salma Women\'s Health Blog',
     },
-    keywords: post.tags.join(', '),
+    keywords: post.seoKeywords?.join(', ') || post.tags.join(', '),
     articleSection: 'Women\'s Health',
     inLanguage: 'en-US',
     isAccessibleForFree: true,
@@ -190,8 +190,8 @@ export default function BlogPostPage({ params }: Props) {
               <div className="flex items-center space-x-4 text-white/80">
                 <span>By {post.author}</span>
                 <span>•</span>
-                <time dateTime={post.date}>
-                  {formatDate(post.date)}
+                <time dateTime={post.createdAt?.toDate?.() || post.createdAt}>
+                  {post.createdAt ? new Date(post.createdAt.toDate?.() || post.createdAt).toLocaleDateString() : 'N/A'}
                 </time>
               </div>
               {post.tags.length > 0 && (
@@ -239,8 +239,8 @@ export default function BlogPostPage({ params }: Props) {
                       <span itemProp="name">By {post.author}</span>
                     </span>
                     <span>•</span>
-                    <time itemProp="datePublished" dateTime={post.date}>
-                      {formatDate(post.date)}
+                    <time itemProp="datePublished" dateTime={post.createdAt?.toDate?.() || post.createdAt}>
+                      {post.createdAt ? new Date(post.createdAt.toDate?.() || post.createdAt).toLocaleDateString() : 'N/A'}
                     </time>
                   </div>
                   {post.tags.length > 0 && (
@@ -263,7 +263,7 @@ export default function BlogPostPage({ params }: Props) {
                   dangerouslySetInnerHTML={{ __html: post.content }}
                 />
                 
-                <meta itemProp="dateModified" content={post.date} />
+                <meta itemProp="dateModified" content={post.updatedAt?.toDate?.() || post.updatedAt} />
                 <meta itemProp="url" content={`https://drsalma.com/blog/${post.slug}`} />
               </div>
             </article>

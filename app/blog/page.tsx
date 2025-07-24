@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getAllPosts, formatDate } from '@/lib/blog';
+import { getAllBlogPosts } from '@/lib/firebase-blog';
 
 export const metadata: Metadata = {
   title: 'Women\'s Health Blog - Dr. Salma | Expert Insights on Hormonal Balance & Natural Medicine',
@@ -56,8 +56,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BlogPage() {
-  const posts = getAllPosts();
+export default async function BlogPage() {
+  const posts = await getAllBlogPosts();
 
   // Generate structured data for the blog
   const structuredData = {
@@ -85,8 +85,8 @@ export default function BlogPage() {
         '@type': 'Person',
         name: post.author,
       },
-      datePublished: post.date,
-      dateModified: post.date,
+      datePublished: post.createdAt?.toDate?.() || post.createdAt,
+      dateModified: post.updatedAt?.toDate?.() || post.updatedAt,
       url: `https://drsalma.com/blog/${post.slug}`,
       mainEntityOfPage: {
         '@type': 'WebPage',
@@ -94,7 +94,7 @@ export default function BlogPage() {
       },
       image: post.featuredImage ? {
         '@type': 'ImageObject',
-        url: `https://drsalma.com${post.featuredImage}`,
+        url: post.featuredImage,
         width: 1200,
         height: 630,
       } : undefined,
@@ -143,7 +143,7 @@ export default function BlogPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {posts.map((post) => (
                 <article
-                  key={post.slug}
+                  key={post.id}
                   className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
                   itemScope
                   itemType="https://schema.org/BlogPosting"
@@ -185,11 +185,11 @@ export default function BlogPage() {
                       <span itemProp="author" itemScope itemType="https://schema.org/Person">
                         <span itemProp="name">By {post.author}</span>
                       </span>
-                      <time itemProp="datePublished" dateTime={post.date}>
-                        {formatDate(post.date)}
+                      <time itemProp="datePublished" dateTime={post.createdAt?.toDate?.() || post.createdAt}>
+                        {post.createdAt ? new Date(post.createdAt.toDate?.() || post.createdAt).toLocaleDateString() : 'N/A'}
                       </time>
                     </div>
-                    <meta itemProp="dateModified" content={post.date} />
+                    <meta itemProp="dateModified" content={post.updatedAt?.toDate?.() || post.updatedAt} />
                     <meta itemProp="url" content={`https://drsalma.com/blog/${post.slug}`} />
                   </div>
                 </article>

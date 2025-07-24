@@ -1,8 +1,8 @@
 import { MetadataRoute } from 'next';
-import { getAllPosts } from '@/lib/blog';
+import { getAllBlogPosts } from '@/lib/firebase-blog';
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const posts = getAllPosts();
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const posts = await getAllBlogPosts();
   
   const baseUrl = 'https://drsalma.com';
   
@@ -31,7 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Blog post pages
   const blogPages = posts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.date),
+    lastModified: post.updatedAt?.toDate?.() || post.createdAt?.toDate?.() || new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }));
