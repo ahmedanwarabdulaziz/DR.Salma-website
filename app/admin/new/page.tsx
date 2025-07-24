@@ -89,9 +89,14 @@ export default function NewPostPage() {
           ...prev,
           featuredImage: imageUrl
         }));
-      } catch (error) {
+      } catch (error: any) {
         console.error('Error uploading image:', error);
-        alert('Error uploading image. Please try again.');
+        // Make image upload optional - continue without image
+        alert('Image upload failed, but you can continue without an image.');
+        setFormData(prev => ({
+          ...prev,
+          featuredImage: ''
+        }));
       } finally {
         setLoading(false);
       }
@@ -110,12 +115,16 @@ export default function NewPostPage() {
       setLoading(true);
       console.log('Creating blog post...', formData);
       
-      await createBlogPost({
+      // If no featured image, use a placeholder
+      const postData = {
         ...formData,
         slug: formData.slug || generateSlug(formData.title),
         seoTitle: formData.seoTitle || formData.title,
         seoDescription: formData.seoDescription || formData.excerpt,
-      });
+        featuredImage: formData.featuredImage || 'https://via.placeholder.com/800x400?text=Dr.+Salma+Blog'
+      };
+      
+      await createBlogPost(postData);
       
       console.log('Blog post created successfully!');
       alert('Blog post created successfully!');
@@ -216,7 +225,7 @@ export default function NewPostPage() {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Featured Image
+                    Featured Image (Optional)
                   </label>
                   <input
                     type="file"
@@ -224,6 +233,9 @@ export default function NewPostPage() {
                     onChange={handleImageUpload}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
+                  <p className="text-sm text-gray-500 mt-1">
+                    Note: Image upload requires Firebase Storage setup. You can add images later.
+                  </p>
                   {formData.featuredImage && (
                     <img 
                       src={formData.featuredImage} 

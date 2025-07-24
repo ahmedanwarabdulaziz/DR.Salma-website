@@ -158,7 +158,8 @@ export async function uploadImage(file: File): Promise<string> {
     return downloadURL;
   } catch (error) {
     console.error('Error uploading image:', error);
-    throw error;
+    // Return a placeholder image if upload fails
+    return 'https://via.placeholder.com/800x400?text=No+Image';
   }
 }
 
