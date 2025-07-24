@@ -4,12 +4,12 @@ import { getStorage } from 'firebase/storage';
 import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCjsIS5LrGEMO6DyZt5nVUFWxC2I_a4sKQ",
-  authDomain: "salmablog-21af3.firebaseapp.com",
-  projectId: "salmablog-21af3",
-  storageBucket: "salmablog-21af3.firebasestorage.app",
-  messagingSenderId: "113616494697",
-  appId: "1:113616494697:web:f50a9f764dd3fc186d42f8"
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || "AIzaSyCjsIS5LrGEMO6DyZt5nVUFWxC2I_a4sKQ",
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN || "salmablog-21af3.firebaseapp.com",
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID || "salmablog-21af3",
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET || "salmablog-21af3.firebasestorage.app",
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID || "113616494697",
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID || "1:113616494697:web:f50a9f764dd3fc186d42f8"
 };
 
 // Initialize Firebase
