@@ -1,9 +1,6 @@
 import { MetadataRoute } from 'next';
-import { getAllBlogPostsSimple } from '@/lib/firebase-blog';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const posts = await getAllBlogPostsSimple();
-  
   const baseUrl = 'https://drsalma.com';
   
   // Static pages
@@ -28,13 +25,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  // Blog post pages
-  const blogPages = posts.map((post) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: post.updatedAt?.toDate?.() || post.createdAt?.toDate?.() || new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }));
+  // Try to get blog posts, but don't fail if Firebase is not available
+  let blogPages: MetadataRoute.Sitemap = [];
+  
+  try {
+    // Dynamic import to avoid Firebase being processed during metadata generation
+    const { getAllBlogPostsSimple } = await import('@/lib/firebase-blog');
+    const posts = await getAllBlogPostsSimple();
+    
+    blogPages = posts.map((post) => ({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: post.updatedAt?.toDate?.() || post.createdAt?.toDate?.() || new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    }));
+  } catch (error) {
+    console.warn('Could not fetch blog posts for sitemap:', error);
+    // Continue without blog posts if Firebase is not available
+  }
 
   return [...staticPages, ...blogPages];
 } 

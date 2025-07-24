@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getAllBlogPostsSimple, BlogPost } from '@/lib/firebase-blog';
 
 export const metadata: Metadata = {
   title: 'Women\'s Health Blog - Dr. Salma | Expert Insights on Hormonal Balance & Natural Medicine',
@@ -57,10 +56,12 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogPage() {
-  let posts: BlogPost[] = [];
+  let posts: any[] = [];
   let error = false;
   
   try {
+    // Dynamic import to avoid Firebase being processed during page generation
+    const { getAllBlogPostsSimple } = await import('@/lib/firebase-blog');
     posts = await getAllBlogPostsSimple();
   } catch (error) {
     console.error('Error loading blog posts:', error);
@@ -157,7 +158,7 @@ export default async function BlogPage() {
                     )}
                     <div className="p-6">
                       <div className="flex items-center space-x-2 mb-4">
-                        {post.tags.map((tag) => (
+                        {post.tags.map((tag: string) => (
                           <span
                             key={tag}
                             className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm"
