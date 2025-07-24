@@ -51,7 +51,7 @@ export default async function BlogPage() {
           ) : (
             <div className="grid gap-8">
               {posts.map((post) => (
-                <article key={post.id} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                <article key={post.id} className={`bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ${post.featured ? 'ring-2 ring-blue-500' : ''}`}>
                   {post.featuredImage && (
                     <div className="relative h-64">
                       <Image
@@ -60,10 +60,20 @@ export default async function BlogPage() {
                         fill
                         className="object-cover"
                       />
+                      {post.featured && (
+                        <div className="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                          Featured
+                        </div>
+                      )}
                     </div>
                   )}
                   <div className="p-6">
                     <div className="flex items-center space-x-2 mb-4">
+                      {post.category && (
+                        <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                          {post.category.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                        </span>
+                      )}
                       {post.tags.map((tag) => (
                         <span
                           key={tag}
@@ -78,7 +88,17 @@ export default async function BlogPage() {
                     </Link>
                     <p className="text-gray-600 mb-4">{post.excerpt}</p>
                     <div className="flex items-center justify-between text-sm text-gray-500">
-                      <span>By {post.author}</span>
+                      <div className="flex items-center space-x-4">
+                        <span>By {post.author}</span>
+                        {post.readingTime && (
+                          <span className="flex items-center">
+                            <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            {post.readingTime} min read
+                          </span>
+                        )}
+                      </div>
                       <time>{post.createdAt ? new Date(post.createdAt.toDate?.() || post.createdAt).toLocaleDateString() : 'N/A'}</time>
                     </div>
                   </div>

@@ -26,6 +26,18 @@ export interface BlogPost {
   published: boolean;
   createdAt?: any;
   updatedAt?: any;
+  // SEO Fields
+  seoTitle?: string;
+  seoDescription?: string;
+  seoKeywords?: string[];
+  // Advanced Features
+  readingTime?: number;
+  category?: string;
+  featured?: boolean;
+  allowComments?: boolean;
+  // Social Media
+  socialImage?: string;
+  socialDescription?: string;
 }
 
 // Get all published blog posts (simplified version)

@@ -25,9 +25,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${post.title} - Dr. Salma`,
-    description: post.excerpt,
-    keywords: post.tags.join(', '),
+    title: post.seoTitle || `${post.title} - Dr. Salma`,
+    description: post.seoDescription || post.excerpt,
+    keywords: post.seoKeywords?.join(', ') || post.tags.join(', '),
+    openGraph: {
+      title: post.seoTitle || post.title,
+      description: post.socialDescription || post.excerpt,
+      images: post.featuredImage ? [post.featuredImage] : [],
+    },
   };
 }
 
@@ -52,6 +57,12 @@ export default async function BlogPostPage({ params }: Props) {
               <span>By {post.author}</span>
               <span>•</span>
               <time>{post.createdAt ? new Date(post.createdAt.toDate?.() || post.createdAt).toLocaleDateString() : 'N/A'}</time>
+              {post.readingTime && (
+                <>
+                  <span>•</span>
+                  <span>{post.readingTime} min read</span>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -73,6 +84,11 @@ export default async function BlogPostPage({ params }: Props) {
             )}
             <div className="p-8">
               <div className="flex items-center space-x-2 mb-6">
+                {post.category && (
+                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                    {post.category.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                  </span>
+                )}
                 {post.tags.map((tag) => (
                   <span
                     key={tag}
@@ -81,10 +97,21 @@ export default async function BlogPostPage({ params }: Props) {
                     {tag}
                   </span>
                 ))}
+                {post.featured && (
+                  <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                    Featured
+                  </span>
+                )}
               </div>
               <div className="prose prose-lg max-w-none">
                 <div dangerouslySetInnerHTML={{ __html: post.content }} />
               </div>
+              {post.allowComments && (
+                <div className="mt-8 pt-8 border-t border-gray-200">
+                  <h3 className="text-lg font-semibold mb-4">Comments</h3>
+                  <p className="text-gray-600">Comments feature coming soon!</p>
+                </div>
+              )}
             </div>
           </article>
         </div>
