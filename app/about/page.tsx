@@ -1,4 +1,6 @@
 import React from 'react'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 import AboutHero from '@/components/about/AboutHero'
 import AboutJourney from '@/components/about/AboutJourney'
 import AboutExpertise from '@/components/about/AboutExpertise'
@@ -13,18 +15,22 @@ import ContactSection from '@/components/ContactSection'
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen">
-      <AboutHero />
-      <AboutJourney />
-      <AboutExpertise />
-      <AboutCredentials />
-      <AboutGlobalImpact />
-      <AboutPhilosophy />
-      <AboutClinics />
-      <AboutSpecializations />
-      <AboutDifference />
-      <AboutRecognition />
-      <ContactSection />
-    </main>
+    <>
+      <Header />
+      <main className="min-h-screen">
+        <AboutHero />
+        <AboutJourney />
+        <AboutExpertise />
+        <AboutCredentials />
+        <AboutGlobalImpact />
+        <AboutPhilosophy />
+        <AboutClinics />
+        <AboutSpecializations />
+        <AboutDifference />
+        <AboutRecognition />
+        <ContactSection />
+      </main>
+      <Footer />
+    </>
   )
 } 
