@@ -19,19 +19,12 @@ const Header = () => {
 
   const navigation = [
     { name: 'Home', href: '#home' },
-    { name: 'About Dr. Salma', href: '/about' },
+    { name: 'About Dr. Salma', href: '#about' },
     {
       name: 'Services',
-                              href: '#services',
-                        dropdown: [
-                          { 
-                            name: 'Hormonal Health Solutions', 
-                            href: '/hormonal-health',
-                            children: [
-                              { name: 'PCOS Management', href: '/pcos-management' },
-                              { name: 'Hashimoto\'s Thyroiditis Management', href: '/hashimotos-thyroiditis' }
-                            ]
-                          },
+      href: '#services',
+      dropdown: [
+        { name: 'Hormonal Health Solutions', href: '/hormonal-health' },
         { name: 'Reproductive & Fertility Health', href: '#reproductive' },
         { name: 'Energy & Wellness Optimization', href: '#energy' },
         { name: 'Comprehensive Women\'s Care', href: '#comprehensive' },
@@ -105,27 +98,13 @@ const Header = () => {
                     </button>
                     <div className="dropdown-menu">
                       {item.dropdown.map((subItem) => (
-                        <div key={subItem.name}>
-                          <a
-                            href={subItem.href}
-                            className="block px-6 py-3 text-sm text-gray-600 hover:text-pink-600 hover:bg-pink-50 transition-all duration-300"
-                          >
-                            {subItem.name}
-                          </a>
-                          {subItem.children && (
-                            <div className="ml-4 border-l border-pink-200">
-                              {subItem.children.map((child) => (
-                                <a
-                                  key={child.name}
-                                  href={child.href}
-                                  className="block px-6 py-2 text-xs text-gray-500 hover:text-pink-600 hover:bg-pink-50 transition-all duration-300"
-                                >
-                                  {child.name}
-                                </a>
-                              ))}
-                            </div>
-                          )}
-                        </div>
+                        <a
+                          key={subItem.name}
+                          href={subItem.href}
+                          className="block px-6 py-3 text-sm text-gray-600 hover:text-pink-600 hover:bg-pink-50 transition-all duration-300"
+                        >
+                          {subItem.name}
+                        </a>
                       ))}
                     </div>
                   </div>
@@ -182,29 +161,14 @@ const Header = () => {
                   {item.dropdown && (
                     <div className="ml-4 space-y-2">
                       {item.dropdown.map((subItem) => (
-                        <div key={subItem.name}>
-                          <a
-                            href={subItem.href}
-                            className="block py-2 text-sm text-gray-600 hover:text-pink-600 transition-colors"
-                            onClick={() => setIsMenuOpen(false)}
-                          >
-                            {subItem.name}
-                          </a>
-                          {subItem.children && (
-                            <div className="ml-4 space-y-1">
-                              {subItem.children.map((child) => (
-                                <a
-                                  key={child.name}
-                                  href={child.href}
-                                  className="block py-1 text-xs text-gray-500 hover:text-pink-600 transition-colors"
-                                  onClick={() => setIsMenuOpen(false)}
-                                >
-                                  {child.name}
-                                </a>
-                              ))}
-                            </div>
-                          )}
-                        </div>
+                        <a
+                          key={subItem.name}
+                          href={subItem.href}
+                          className="block py-2 text-sm text-gray-600 hover:text-pink-600 transition-colors"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {subItem.name}
+                        </a>
                       ))}
                     </div>
                   )}

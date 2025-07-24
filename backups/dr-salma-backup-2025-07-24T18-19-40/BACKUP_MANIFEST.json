@@ -1,0 +1,30 @@
+{
+  "backupName": "dr-salma-backup-2025-07-24T18-19-40",
+  "timestamp": "2025-07-24T18:19:41.082Z",
+  "items": [
+    "app",
+    "components",
+    "public",
+    "strapi-blog",
+    "styles",
+    "assets",
+    "package.json",
+    "package-lock.json",
+    "next.config.js",
+    "tailwind.config.js",
+    "tsconfig.json",
+    "postcss.config.js",
+    "README.md",
+    "scripts"
+  ],
+  "excluded": [
+    "node_modules",
+    ".next",
+    ".git",
+    "backups",
+    ".env.local",
+    ".env.production.local",
+    ".env.development.local"
+  ],
+  "totalSize": 3711068
+}

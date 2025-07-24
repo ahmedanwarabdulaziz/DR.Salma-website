@@ -4,7 +4,6 @@ import Footer from '@/components/Footer'
 import HormonalHero from '@/components/solutions/HormonalHero'
 import HormonalInfoSection from '@/components/solutions/HormonalInfoSection'
 import HormonalSolutionsSection from '@/components/solutions/HormonalSolutionsSection'
-import ContactSection from '@/components/ContactSection'
 
 export default function HormonalHealthPage() {
   return (
@@ -13,7 +12,6 @@ export default function HormonalHealthPage() {
       <HormonalHero />
       <HormonalInfoSection />
       <HormonalSolutionsSection />
-      <ContactSection />
       <Footer />
     </main>
   )

@@ -2,7 +2,6 @@ import Header from '@/components/Header'
 import Hero from '@/components/Hero'
 import DescriptionSection from '@/components/DescriptionSection'
 import SolutionsSection from '@/components/SolutionsSection'
-import TestimonialsSection from '@/components/TestimonialsSection'
 import AboutSection from '@/components/AboutSection'
 import ContactSection from '@/components/ContactSection'
 import Footer from '@/components/Footer'
@@ -16,7 +15,6 @@ export default function Home() {
         <DescriptionSection />
         <SolutionsSection />
         <AboutSection />
-        <TestimonialsSection />
         <ContactSection />
       </div>
       <Footer />

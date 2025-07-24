@@ -9,37 +9,37 @@ const SolutionsSection = () => {
   const solutions = [
     {
       id: 1,
-      title: "Advanced Hormonal Health Solutions",
-      struggle: "Complex hormonal imbalances affecting your metabolism, mood, and overall well-being, with symptoms that conventional medicine often fails to address comprehensively",
-      provides: "Evidence-based diagnostic protocols combined with integrative treatment approaches, utilizing advanced hormone testing, personalized supplementation, and lifestyle optimization strategies",
-      outcome: "Achieve hormonal equilibrium through scientifically-backed interventions, restoring your body's natural rhythms and reclaiming optimal health",
+      title: "Hormonal Health Solutions",
+      struggle: "Hormonal imbalances that control your life and leave you feeling frustrated",
+      provides: "Medical expertise to understand your hormones combined with natural solutions that restore balance",
+      outcome: "Finally feel in control of your body and hormones again",
       buttons: ["PCOS Management", "Hashimoto's Thyroiditis", "Hormonal Acne Treatment"],
       image: "/images/banner-1.png"
     },
     {
       id: 2,
-      title: "Reproductive & Fertility Excellence",
-      struggle: "Unexplained fertility challenges, debilitating menstrual disorders, or reproductive health concerns requiring specialized diagnostic expertise and innovative treatment protocols",
-      provides: "Comprehensive reproductive health assessments utilizing advanced diagnostic technologies, combined with evidence-based integrative therapies and personalized fertility optimization strategies",
-      outcome: "Experience breakthrough reproductive health outcomes through cutting-edge diagnostics and tailored therapeutic interventions designed for your unique physiology",
+      title: "Reproductive & Fertility Health",
+      struggle: "Fertility challenges, painful periods, or reproductive health concerns that no one seems to understand",
+      provides: "Gynecological expertise to uncover hidden causes plus gentle natural therapies for lasting solutions",
+      outcome: "Reclaim your reproductive health and find hope for your future",
       buttons: ["Unexplained Infertility Solutions", "Endometriosis Pain Management", "Menopause & Perimenopause Support"],
       image: "/images/banner-2.png"
     },
     {
       id: 3,
       title: "Energy & Wellness Optimization",
-      struggle: "Persistent fatigue, anxiety, or chronic pain syndromes that significantly impact your quality of life and require sophisticated diagnostic and therapeutic approaches",
-      provides: "Comprehensive biopsychosocial assessment protocols, integrating advanced laboratory diagnostics with evidence-based natural therapies and personalized wellness optimization strategies",
-      outcome: "Achieve sustained vitality and mental clarity through scientifically-validated interventions that address the root causes of your symptoms",
+      struggle: "Chronic fatigue, anxiety, or pain that limits your daily life and steals your joy",
+      provides: "Comprehensive assessment to find root causes plus natural therapies for lasting energy and peace",
+      outcome: "Wake up energized and feel like yourself again",
       buttons: ["Chronic Fatigue & Energy Optimization", "Anxiety Linked to Hormonal Imbalances", "Pain Management (TCM/Acupuncture)"],
       image: "/images/banner-3.png"
     },
     {
       id: 4,
-      title: "Comprehensive Women's Healthcare",
-      struggle: "Complex health presentations requiring sophisticated diagnostic expertise and personalized treatment protocols that honor your unique physiological and psychological profile",
-      provides: "Advanced health assessment methodologies utilizing cutting-edge diagnostic technologies, combined with evidence-based integrative treatment protocols tailored to your specific health objectives",
-      outcome: "Experience healthcare excellence through personalized diagnostic precision and therapeutic interventions designed to optimize your long-term health outcomes",
+      title: "Comprehensive Women's Care",
+      struggle: "Feeling 'off' but not knowing why, or wanting personalized care that treats you as a whole person",
+      provides: "Individualized assessment and treatment plans that honor your unique health journey",
+      outcome: "Experience healthcare that's as unique as you are",
       buttons: ["General Women's Wellness", "Classical Homeopathy"],
       image: "/images/banner-4.png"
     }
@@ -140,19 +140,14 @@ const SolutionsSection = () => {
 
                   {/* Buttons */}
                   <div className="mt-auto">
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-wrap gap-2">
                       {solution.buttons.map((button, buttonIndex) => (
-                        <button
+                        <span
                           key={buttonIndex}
-                          className="w-full px-4 py-3 bg-pink-100 text-pink-700 rounded-full text-sm font-medium hover:bg-pink-200 hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer border border-pink-200 hover:border-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50 text-center"
-                          onClick={() => {
-                            // Handle button click - you can add navigation or other functionality here
-                            console.log(`Clicked: ${button}`);
-                          }}
-                          aria-label={`Learn more about ${button}`}
+                          className="inline-block px-4 py-2 bg-pink-100 text-pink-700 rounded-full text-sm font-medium hover:bg-pink-200 transition-colors duration-300"
                         >
                           {button}
-                        </button>
+                        </span>
                       ))}
                     </div>
                   </div>

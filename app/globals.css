@@ -4,7 +4,160 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
+/* Blob Animation */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
 
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Brand Animations */
+@keyframes subtle-float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes gentle-pulse {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(236, 72, 153, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(236, 72, 153, 0.2);
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Brand Utility Classes */
+.subtle-float {
+  animation: subtle-float 6s ease-in-out infinite;
+}
+
+.gentle-pulse {
+  animation: gentle-pulse 4s ease-in-out infinite;
+}
+
+.brand-gradient {
+  background: linear-gradient(135deg, #ec4899 0%, #22c55e 50%, #ec4899 100%);
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+.brand-text-gradient {
+  background: linear-gradient(135deg, #ec4899 0%, #22c55e 50%, #ec4899 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 3s ease infinite;
+}
+
+.brand-border {
+  position: relative;
+}
+
+.brand-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(45deg, #ec4899, #22c55e, #ec4899);
+  border-radius: inherit;
+  z-index: -1;
+  animation: gradient-shift 3s ease infinite;
+}
+
+.brand-shadow {
+  box-shadow: 
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.brand-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
+
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Brand Styles */
+.brand-frame {
+  filter: drop-shadow(0 4px 8px rgba(236, 72, 153, 0.1));
+}
+
+.brand-element {
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(236, 72, 153, 0.1);
+}
 
 @layer base {
   html {
@@ -14,23 +167,30 @@
   body {
     font-family: 'Source Sans Pro', sans-serif;
     line-height: 1.6;
-    color: #333333;
+    color: #374151;
     background-color: #ffffff;
     overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-gradient-to-r from-pink-600 to-pink-700 text-white px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 hover:shadow-lg hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-opacity-50 relative overflow-hidden;
+    @apply bg-gradient-to-r from-pink-600 to-pink-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:shadow-lg hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-opacity-50 relative overflow-hidden;
+    font-family: 'Source Sans Pro', sans-serif;
   }
   
   .btn-secondary {
-    @apply bg-white border-2 border-green-600 text-green-600 px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 hover:bg-green-600 hover:text-white hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50 relative overflow-hidden;
+    @apply bg-white border-2 border-green-600 text-green-600 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:bg-green-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50 relative overflow-hidden;
+    font-family: 'Source Sans Pro', sans-serif;
   }
   
   .nav-link {
-    @apply text-gray-800 font-medium text-base transition-all duration-300 hover:text-pink-600 relative;
+    @apply text-gray-700 font-medium text-base transition-all duration-300 hover:text-pink-600 relative;
+    font-family: 'Source Sans Pro', sans-serif;
   }
   
   .nav-link::after {
@@ -42,7 +202,7 @@
   }
   
   .dropdown-menu {
-    @apply absolute top-full left-0 bg-white min-w-64 shadow-lg rounded-xl py-4 opacity-0 invisible -translate-y-2 transition-all duration-300 border border-pink-200;
+    @apply absolute top-full left-0 bg-white min-w-64 shadow-lg rounded-lg py-4 opacity-0 invisible -translate-y-2 transition-all duration-300 border border-pink-200;
   }
   
   .dropdown:hover .dropdown-menu {
@@ -51,18 +211,21 @@
   
   .hero-title {
     @apply font-bold text-3xl md:text-4xl lg:text-5xl leading-tight text-gray-900;
+    font-family: 'Playfair Display', serif;
   }
   
   .hero-description {
-    @apply text-lg md:text-xl text-gray-600 leading-relaxed font-normal;
+    @apply text-lg md:text-xl text-gray-600 leading-relaxed font-light;
+    font-family: 'Source Sans Pro', sans-serif;
   }
   
   .section-title {
-    @apply font-bold text-4xl md:text-5xl text-gray-900 text-center mb-16;
+    @apply font-bold text-4xl md:text-5xl text-green-600 text-center mb-16;
+    font-family: 'Playfair Display', serif;
   }
   
   .card {
-    @apply bg-white rounded-2xl shadow-lg p-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-2;
+    @apply bg-white rounded-lg shadow-lg p-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
   }
   
   .gradient-text {
@@ -99,22 +262,27 @@
   
   .prose {
     @apply text-gray-700 leading-relaxed;
+    font-family: 'Source Sans Pro', sans-serif;
   }
   
   .prose h1 {
-    @apply text-3xl font-bold text-gray-900 mb-6;
+    @apply text-3xl font-bold mb-4 text-gray-900;
+    font-family: 'Playfair Display', serif;
   }
   
   .prose h2 {
-    @apply text-2xl font-bold text-gray-900 mb-4;
+    @apply text-2xl font-bold mb-3 text-gray-900;
+    font-family: 'Playfair Display', serif;
   }
   
   .prose h3 {
-    @apply text-xl font-semibold text-gray-900 mb-3;
+    @apply text-xl font-bold mb-2 text-gray-900;
+    font-family: 'Playfair Display', serif;
   }
   
   .prose p {
-    @apply mb-4 text-gray-700 leading-relaxed;
+    @apply mb-4;
+    font-family: 'Source Sans Pro', sans-serif;
   }
   
   .prose ul, .prose ol {
@@ -122,18 +290,22 @@
   }
   
   .prose li {
-    @apply mb-2 text-gray-700;
+    @apply mb-2;
+    font-family: 'Source Sans Pro', sans-serif;
   }
   
   .prose a {
     @apply text-pink-600 hover:text-pink-700 underline;
+    font-family: 'Source Sans Pro', sans-serif;
   }
   
   .prose strong {
-    @apply font-semibold text-gray-900;
+    @apply font-bold;
+    font-family: 'Source Sans Pro', sans-serif;
   }
   
   .prose em {
-    @apply italic text-gray-700;
+    @apply italic;
+    font-family: 'Source Sans Pro', sans-serif;
   }
 } 
