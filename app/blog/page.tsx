@@ -58,12 +58,13 @@ export const metadata: Metadata = {
 
 export default async function BlogPage() {
   let posts: BlogPost[] = [];
+  let error = false;
   
   try {
     posts = await getAllBlogPostsSimple();
   } catch (error) {
     console.error('Error loading blog posts:', error);
-    // Continue with empty posts array
+    error = true;
   }
 
   // Generate structured data for the blog
@@ -114,7 +115,20 @@ export default async function BlogPage() {
         {/* Blog Posts */}
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto">
-            {posts.length === 0 ? (
+            {error ? (
+              <div className="text-center py-16">
+                <h2 className="text-2xl font-semibold text-gray-900 mb-4">Connection Issue</h2>
+                <p className="text-gray-600 mb-8">
+                  We're having trouble connecting to our blog database. Please try again in a few minutes.
+                </p>
+                <button
+                  onClick={() => window.location.reload()}
+                  className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                >
+                  Refresh Page
+                </button>
+              </div>
+            ) : posts.length === 0 ? (
               <div className="text-center py-16">
                 <h2 className="text-2xl font-semibold text-gray-900 mb-4">No Blog Posts Yet</h2>
                 <p className="text-gray-600 mb-8">

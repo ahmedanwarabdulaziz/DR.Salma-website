@@ -173,23 +173,35 @@ export function generateSlug(title: string): string {
     .trim();
 } 
 
-// Get all blog posts (simpler version without composite index)
+// Get all blog posts (simplest version - no queries, no indexes needed)
 export async function getAllBlogPostsSimple(): Promise<BlogPost[]> {
   try {
+    console.log('Fetching blog posts...');
     const querySnapshot = await getDocs(collection(db, 'blog-posts'));
+    
+    if (querySnapshot.empty) {
+      console.log('No blog posts found');
+      return [];
+    }
+    
     const allPosts = querySnapshot.docs.map(doc => ({
       id: doc.id,
       ...doc.data()
     })) as BlogPost[];
     
+    console.log(`Found ${allPosts.length} total posts`);
+    
     // Filter published posts and sort by date
-    return allPosts
+    const publishedPosts = allPosts
       .filter(post => post.published === true)
       .sort((a, b) => {
         const dateA = a.createdAt?.toDate?.() || a.createdAt || new Date(0);
         const dateB = b.createdAt?.toDate?.() || b.createdAt || new Date(0);
         return new Date(dateB).getTime() - new Date(dateA).getTime();
       });
+    
+    console.log(`Found ${publishedPosts.length} published posts`);
+    return publishedPosts;
   } catch (error) {
     console.error('Error getting blog posts:', error);
     return [];
