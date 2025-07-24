@@ -197,7 +197,7 @@ const PCOSHero = () => {
                   
                   <div className="relative p-3">
                     <Image
-                      src="/images/salma-1.png"
+                      src="/images/pic15.png"
                       alt="Dr. Salma - PCOS Management Specialist"
                       width={500}
                       height={600}
