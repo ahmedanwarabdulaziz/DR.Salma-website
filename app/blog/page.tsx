@@ -3,6 +3,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getBlogPosts, BlogPost } from '@/lib/blog';
 
+// Force dynamic rendering - no caching
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export const metadata: Metadata = {
   title: 'Women\'s Health Blog - Dr. Salma',
   description: 'Expert insights on women\'s health, hormonal balance, and natural medicine',

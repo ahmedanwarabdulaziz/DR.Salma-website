@@ -40,7 +40,7 @@ export default function NewPostPage() {
       };
 
       await createBlogPost(postData);
-      router.push('/admin');
+      router.push('/blog');
     } catch (error) {
       console.error('Error creating post:', error);
       alert('Error creating post. Please try again.');

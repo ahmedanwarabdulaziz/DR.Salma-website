@@ -4,6 +4,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getBlogPost } from '@/lib/blog';
 
+// Force dynamic rendering - no caching
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 interface Props {
   params: {
     slug: string;
