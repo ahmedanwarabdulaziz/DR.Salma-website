@@ -108,6 +108,8 @@ export default function NewPostPage() {
 
     try {
       setLoading(true);
+      console.log('Creating blog post...', formData);
+      
       await createBlogPost({
         ...formData,
         slug: formData.slug || generateSlug(formData.title),
@@ -115,10 +117,20 @@ export default function NewPostPage() {
         seoDescription: formData.seoDescription || formData.excerpt,
       });
       
+      console.log('Blog post created successfully!');
+      alert('Blog post created successfully!');
       router.push('/admin');
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error creating post:', error);
-      alert('Error creating post. Please try again.');
+      
+      // Provide specific error messages
+      if (error.code === 'permission-denied') {
+        alert('Firebase permissions error. Please check FIREBASE_PERMISSIONS_FIX.md for setup instructions.');
+      } else if (error.code === 'unavailable') {
+        alert('Firebase service unavailable. Please check your internet connection and try again.');
+      } else {
+        alert(`Error creating post: ${error.message || 'Unknown error occurred. Please try again.'}`);
+      }
     } finally {
       setLoading(false);
     }
