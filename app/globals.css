@@ -4,72 +4,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
-/* React Quill Editor Styles */
-.ql-editor {
-  min-height: 200px;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-}
 
-.ql-toolbar {
-  border-top: 1px solid #e5e7eb;
-  border-left: 1px solid #e5e7eb;
-  border-right: 1px solid #e5e7eb;
-  border-bottom: none;
-  background-color: #f9fafb;
-}
-
-.ql-container {
-  border-bottom: 1px solid #e5e7eb;
-  border-left: 1px solid #e5e7eb;
-  border-right: 1px solid #e5e7eb;
-  border-top: none;
-}
-
-.ql-editor h1 {
-  font-size: 2em;
-  font-weight: bold;
-  margin-bottom: 0.5em;
-}
-
-.ql-editor h2 {
-  font-size: 1.5em;
-  font-weight: bold;
-  margin-bottom: 0.5em;
-}
-
-.ql-editor h3 {
-  font-size: 1.25em;
-  font-weight: bold;
-  margin-bottom: 0.5em;
-}
-
-.ql-editor p {
-  margin-bottom: 1em;
-}
-
-.ql-editor ul, .ql-editor ol {
-  margin-bottom: 1em;
-  padding-left: 2em;
-}
-
-.ql-editor li {
-  margin-bottom: 0.5em;
-}
-
-.ql-editor a {
-  color: #3b82f6;
-  text-decoration: underline;
-}
-
-.ql-editor strong {
-  font-weight: bold;
-}
-
-.ql-editor em {
-  font-style: italic;
-}
 
 @layer base {
   html {
