@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Menu, X, ChevronDown } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -18,7 +19,7 @@ const Header = () => {
   }, [])
 
   const navigation = [
-    { name: 'Home', href: '#home' },
+    { name: 'Home', href: '/' },
     { name: 'About Dr. Salma', href: '/about' },
     {
       name: 'Services',
@@ -59,39 +60,41 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex items-center space-x-4"
-          >
-            <div className="relative w-12 h-12">
-              <Image
-                src="/images/logo.png"
-                alt="Dr. Salma Logo"
-                fill
-                className="object-contain"
-              />
-            </div>
-            <div className="flex flex-col">
-              <div className="flex items-center space-x-2">
-                <h1 className="font-bold text-2xl text-pink-600 leading-tight">
-                  Dr.Salma
-                </h1>
-                <div className="relative w-5 h-5">
-                  <Image
-                    src="/images/butterfly.png"
-                    alt="Butterfly"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
+          <Link href="/" className="flex items-center space-x-4 hover:opacity-80 transition-opacity duration-300">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="flex items-center space-x-4"
+            >
+              <div className="relative w-12 h-12">
+                <Image
+                  src="/images/logo.png"
+                  alt="Dr. Salma Logo"
+                  fill
+                  className="object-contain"
+                />
               </div>
-              <p className="text-xs font-medium text-green-600 uppercase tracking-wider">
-                Women Ontario Hub
-              </p>
-            </div>
-          </motion.div>
+              <div className="flex flex-col">
+                <div className="flex items-center space-x-2">
+                  <h1 className="font-bold text-2xl text-pink-600 leading-tight">
+                    Dr.Salma
+                  </h1>
+                  <div className="relative w-5 h-5">
+                    <Image
+                      src="/images/butterfly.png"
+                      alt="Butterfly"
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                </div>
+                <p className="text-xs font-medium text-green-600 uppercase tracking-wider">
+                  Women Ontario Hub
+                </p>
+              </div>
+            </motion.div>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
