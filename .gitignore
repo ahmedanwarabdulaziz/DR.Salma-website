@@ -20,12 +20,8 @@ dist/
 # Vercel
 .vercel
 
-# Strapi
+# Strapi (old blog system - excluded)
 strapi-blog/
-strapi-blog/.tmp/
-strapi-blog/dist/
-strapi-blog/build/
-strapi-blog/.env
 
 # Database
 *.db
