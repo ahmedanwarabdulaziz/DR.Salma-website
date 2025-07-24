@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
-import { createBlogPost, uploadImage, generateSlug, BlogPost } from '@/lib/firebase-blog';
+import { createBlogPost, generateSlug, BlogPost } from '@/lib/firebase-blog';
+import { uploadImageToFreeService } from '@/lib/image-upload';
 
 // Dynamically import ReactQuill to avoid SSR issues
 const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
@@ -84,7 +85,7 @@ export default function NewPostPage() {
     if (file) {
       try {
         setLoading(true);
-        const imageUrl = await uploadImage(file);
+        const imageUrl = await uploadImageToFreeService(file);
         setFormData(prev => ({
           ...prev,
           featuredImage: imageUrl
@@ -234,7 +235,7 @@ export default function NewPostPage() {
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                   <p className="text-sm text-gray-500 mt-1">
-                    Note: Image upload requires Firebase Storage setup. You can add images later.
+                    Images will be stored using free image hosting service. No Firebase Storage required!
                   </p>
                   {formData.featuredImage && (
                     <img 
