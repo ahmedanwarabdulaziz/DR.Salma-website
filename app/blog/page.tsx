@@ -10,7 +10,9 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogPage() {
+  console.log('Fetching blog posts...');
   const posts = await getBlogPosts();
+  console.log('Posts received:', posts.length, posts);
 
   return (
     <div className="min-h-screen bg-gray-50">

@@ -28,19 +28,28 @@ export interface BlogPost {
   updatedAt?: any;
 }
 
-// Get all published blog posts
+// Get all published blog posts (simplified version)
 export async function getBlogPosts(): Promise<BlogPost[]> {
   try {
-    const q = query(
-      collection(db, 'blog-posts'), 
-      where('published', '==', true),
-      orderBy('createdAt', 'desc')
-    );
-    const querySnapshot = await getDocs(q);
-    return querySnapshot.docs.map(doc => ({
+    // Get all posts first, then filter client-side to avoid index issues
+    const querySnapshot = await getDocs(collection(db, 'blog-posts'));
+    
+    const allPosts = querySnapshot.docs.map(doc => ({
       id: doc.id,
       ...doc.data()
     })) as BlogPost[];
+
+    // Filter published posts and sort by date
+    const publishedPosts = allPosts
+      .filter(post => post.published === true)
+      .sort((a, b) => {
+        const dateA = a.createdAt?.toDate?.() || a.createdAt || new Date(0);
+        const dateB = b.createdAt?.toDate?.() || b.createdAt || new Date(0);
+        return new Date(dateB).getTime() - new Date(dateA).getTime();
+      });
+
+    console.log(`Found ${publishedPosts.length} published posts out of ${allPosts.length} total`);
+    return publishedPosts;
   } catch (error) {
     console.error('Error getting blog posts:', error);
     return [];
@@ -50,8 +59,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
 // Get all blog posts for admin
 export async function getAdminBlogPosts(): Promise<BlogPost[]> {
   try {
-    const q = query(collection(db, 'blog-posts'), orderBy('createdAt', 'desc'));
-    const querySnapshot = await getDocs(q);
+    const querySnapshot = await getDocs(collection(db, 'blog-posts'));
     return querySnapshot.docs.map(doc => ({
       id: doc.id,
       ...doc.data()
@@ -65,19 +73,16 @@ export async function getAdminBlogPosts(): Promise<BlogPost[]> {
 // Get single blog post by slug
 export async function getBlogPost(slug: string): Promise<BlogPost | null> {
   try {
-    const q = query(
-      collection(db, 'blog-posts'),
-      where('slug', '==', slug),
-      where('published', '==', true)
-    );
-    const querySnapshot = await getDocs(q);
-    if (querySnapshot.empty) return null;
+    const querySnapshot = await getDocs(collection(db, 'blog-posts'));
     
-    const doc = querySnapshot.docs[0];
-    return {
-      id: doc.id,
-      ...doc.data()
-    } as BlogPost;
+    for (const doc of querySnapshot.docs) {
+      const post = { id: doc.id, ...doc.data() } as BlogPost;
+      if (post.slug === slug && post.published === true) {
+        return post;
+      }
+    }
+    
+    return null;
   } catch (error) {
     console.error('Error getting blog post:', error);
     return null;
