@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getBlogPostBySlug, getAllBlogPosts } from '@/lib/firebase-blog';
+import { getBlogPostBySlug, getAllBlogPostsSimple } from '@/lib/firebase-blog';
 
 interface Props {
   params: {
@@ -99,7 +99,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export async function generateStaticParams() {
-  const posts = await getAllBlogPosts();
+  const posts = await getAllBlogPostsSimple();
   return posts.map((post) => ({
     slug: post.slug,
   }));

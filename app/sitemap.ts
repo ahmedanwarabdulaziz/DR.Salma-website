@@ -1,8 +1,8 @@
 import { MetadataRoute } from 'next';
-import { getAllBlogPosts } from '@/lib/firebase-blog';
+import { getAllBlogPostsSimple } from '@/lib/firebase-blog';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const posts = await getAllBlogPosts();
+  const posts = await getAllBlogPostsSimple();
   
   const baseUrl = 'https://drsalma.com';
   

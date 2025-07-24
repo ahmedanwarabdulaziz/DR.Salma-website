@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getAllBlogPosts } from '@/lib/firebase-blog';
+import { getAllBlogPostsSimple } from '@/lib/firebase-blog';
 
 export const metadata: Metadata = {
   title: 'Women\'s Health Blog - Dr. Salma | Expert Insights on Hormonal Balance & Natural Medicine',
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogPage() {
-  const posts = await getAllBlogPosts();
+  const posts = await getAllBlogPostsSimple();
 
   // Generate structured data for the blog
   const structuredData = {

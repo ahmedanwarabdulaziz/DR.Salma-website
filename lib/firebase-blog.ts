@@ -172,3 +172,26 @@ export function generateSlug(title: string): string {
     .replace(/-+/g, '-')
     .trim();
 } 
+
+// Get all blog posts (simpler version without composite index)
+export async function getAllBlogPostsSimple(): Promise<BlogPost[]> {
+  try {
+    const querySnapshot = await getDocs(collection(db, 'blog-posts'));
+    const allPosts = querySnapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    })) as BlogPost[];
+    
+    // Filter published posts and sort by date
+    return allPosts
+      .filter(post => post.published === true)
+      .sort((a, b) => {
+        const dateA = a.createdAt?.toDate?.() || a.createdAt || new Date(0);
+        const dateB = b.createdAt?.toDate?.() || b.createdAt || new Date(0);
+        return new Date(dateB).getTime() - new Date(dateA).getTime();
+      });
+  } catch (error) {
+    console.error('Error getting blog posts:', error);
+    return [];
+  }
+} 
