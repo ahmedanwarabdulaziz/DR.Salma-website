@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getAllBlogPostsSimple } from '@/lib/firebase-blog';
+import { getAllBlogPostsSimple, BlogPost } from '@/lib/firebase-blog';
 
 export const metadata: Metadata = {
   title: 'Women\'s Health Blog - Dr. Salma | Expert Insights on Hormonal Balance & Natural Medicine',
@@ -57,7 +57,14 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogPage() {
-  const posts = await getAllBlogPostsSimple();
+  let posts: BlogPost[] = [];
+  
+  try {
+    posts = await getAllBlogPostsSimple();
+  } catch (error) {
+    console.error('Error loading blog posts:', error);
+    // Continue with empty posts array
+  }
 
   // Generate structured data for the blog
   const structuredData = {
@@ -66,38 +73,18 @@ export default async function BlogPage() {
     name: 'Dr. Salma Women\'s Health Blog',
     description: 'Expert insights on women\'s health, hormonal balance, and natural medicine',
     url: 'https://drsalma.com/blog',
-    author: {
-      '@type': 'Person',
-      name: 'Dr. Salma',
-      jobTitle: 'Women\'s Health Specialist',
-      description: 'Expert in women\'s health, hormonal balance, and natural medicine',
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'Dr. Salma Women\'s Health',
-      url: 'https://drsalma.com',
-    },
+    author: { '@type': 'Person', name: 'Dr. Salma', jobTitle: 'Women\'s Health Specialist' },
+    publisher: { '@type': 'Organization', name: 'Dr. Salma Women\'s Health', url: 'https://drsalma.com' },
     blogPost: posts.map((post) => ({
       '@type': 'BlogPosting',
       headline: post.title,
       description: post.excerpt,
-      author: {
-        '@type': 'Person',
-        name: post.author,
-      },
+      author: { '@type': 'Person', name: post.author },
       datePublished: post.createdAt?.toDate?.() || post.createdAt,
       dateModified: post.updatedAt?.toDate?.() || post.updatedAt,
       url: `https://drsalma.com/blog/${post.slug}`,
-      mainEntityOfPage: {
-        '@type': 'WebPage',
-        '@id': `https://drsalma.com/blog/${post.slug}`,
-      },
-      image: post.featuredImage ? {
-        '@type': 'ImageObject',
-        url: post.featuredImage,
-        width: 1200,
-        height: 630,
-      } : undefined,
+      mainEntityOfPage: { '@type': 'WebPage', '@id': `https://drsalma.com/blog/${post.slug}` },
+      image: post.featuredImage ? { '@type': 'ImageObject', url: post.featuredImage, width: 1200, height: 630 } : undefined,
       keywords: post.tags.join(', '),
     })),
   };
@@ -113,107 +100,74 @@ export default async function BlogPage() {
       
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
+        <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
-              <h1 className="text-4xl md:text-6xl font-bold mb-6">
-                Dr. Salma's Women's Health Blog
-              </h1>
-              <p className="text-xl md:text-2xl mb-8">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6">Dr. Salma's Women's Health Blog</h1>
+              <p className="text-xl text-white/90 mb-8">
                 Expert insights on women's health, hormonal balance, and natural medicine
               </p>
-              <div className="flex justify-center space-x-4">
-                <span className="bg-white/20 px-4 py-2 rounded-full text-sm">
-                  Women's Health
-                </span>
-                <span className="bg-white/20 px-4 py-2 rounded-full text-sm">
-                  Hormonal Balance
-                </span>
-                <span className="bg-white/20 px-4 py-2 rounded-full text-sm">
-                  Natural Medicine
-                </span>
-              </div>
             </div>
           </div>
         </div>
 
         {/* Blog Posts */}
         <div className="container mx-auto px-4 py-16">
-          {posts.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {posts.map((post) => (
-                <article
-                  key={post.id}
-                  className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
-                  itemScope
-                  itemType="https://schema.org/BlogPosting"
-                >
-                  {post.featuredImage && (
-                    <div className="relative h-48">
-                      <Image
-                        src={post.featuredImage}
-                        alt={post.title}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  )}
-                  <div className="p-6">
-                    <div className="flex items-center space-x-2 mb-3">
-                      {post.tags.slice(0, 2).map((tag) => (
-                        <span
-                          key={tag}
-                          className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <h2 className="text-xl font-bold mb-3 text-gray-900">
-                      <Link
-                        href={`/blog/${post.slug}`}
-                        className="hover:text-blue-600 transition-colors"
-                        itemProp="headline"
-                      >
-                        {post.title}
-                      </Link>
-                    </h2>
-                    <p className="text-gray-600 mb-4 line-clamp-3" itemProp="description">
-                      {post.excerpt}
-                    </p>
-                    <div className="flex items-center justify-between text-sm text-gray-500">
-                      <span itemProp="author" itemScope itemType="https://schema.org/Person">
-                        <span itemProp="name">By {post.author}</span>
-                      </span>
-                      <time itemProp="datePublished" dateTime={post.createdAt?.toDate?.() || post.createdAt}>
-                        {post.createdAt ? new Date(post.createdAt.toDate?.() || post.createdAt).toLocaleDateString() : 'N/A'}
-                      </time>
-                    </div>
-                    <meta itemProp="dateModified" content={post.updatedAt?.toDate?.() || post.updatedAt} />
-                    <meta itemProp="url" content={`https://drsalma.com/blog/${post.slug}`} />
-                  </div>
-                </article>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-16">
-              <div className="max-w-md mx-auto">
-                <div className="text-6xl mb-4">📝</div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                  No blog posts yet
-                </h2>
+          <div className="max-w-4xl mx-auto">
+            {posts.length === 0 ? (
+              <div className="text-center py-16">
+                <h2 className="text-2xl font-semibold text-gray-900 mb-4">No Blog Posts Yet</h2>
                 <p className="text-gray-600 mb-8">
-                  Blog posts will appear here once they're created. Check back soon for expert insights on women's health!
+                  Check back soon for expert insights on women's health and hormonal balance.
                 </p>
                 <Link
-                  href="/"
+                  href="/admin"
                   className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
                 >
-                  ← Back to Home
+                  Create First Post
                 </Link>
               </div>
-            </div>
-          )}
+            ) : (
+              <div className="grid gap-8">
+                {posts.map((post) => (
+                  <article key={post.id} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300" itemScope itemType="https://schema.org/BlogPosting">
+                    {post.featuredImage && (
+                      <div className="relative h-64">
+                        <Image
+                          src={post.featuredImage}
+                          alt={post.title}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    )}
+                    <div className="p-6">
+                      <div className="flex items-center space-x-2 mb-4">
+                        {post.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <Link href={`/blog/${post.slug}`} className="hover:text-blue-600 transition-colors" itemProp="headline">
+                        <h2 className="text-2xl font-bold text-gray-900 mb-4">{post.title}</h2>
+                      </Link>
+                      <p className="text-gray-600 mb-4 line-clamp-3" itemProp="description">{post.excerpt}</p>
+                      <div className="flex items-center justify-between text-sm text-gray-500">
+                        <span itemProp="author" itemScope itemType="https://schema.org/Person"><span itemProp="name">By {post.author}</span></span>
+                        <time itemProp="datePublished" dateTime={post.createdAt?.toDate?.() || post.createdAt}>{post.createdAt ? new Date(post.createdAt.toDate?.() || post.createdAt).toLocaleDateString() : 'N/A'}</time>
+                      </div>
+                      <meta itemProp="dateModified" content={post.updatedAt?.toDate?.() || post.updatedAt} />
+                      <meta itemProp="url" content={`https://drsalma.com/blog/${post.slug}`} />
+                    </div>
+                  </article>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </>
