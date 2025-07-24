@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Source Sans Pro', sans-serif;
+    line-height: 1.6;
+    color: #333333;
+    background-color: #ffffff;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-pink-600 to-pink-700 text-white px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 hover:shadow-lg hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-pink-600 focus:ring-opacity-50 relative overflow-hidden;
+  }
+  
+  .btn-secondary {
+    @apply bg-white border-2 border-green-600 text-green-600 px-8 py-4 rounded-2xl font-semibold text-lg transition-all duration-300 hover:bg-green-600 hover:text-white hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-green-600 focus:ring-opacity-50 relative overflow-hidden;
+  }
+  
+  .nav-link {
+    @apply text-gray-800 font-medium text-base transition-all duration-300 hover:text-pink-600 relative;
+  }
+  
+  .nav-link::after {
+    @apply content-[''] absolute bottom-0 left-0 w-0 h-0.5 bg-pink-600 transition-all duration-300;
+  }
+  
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+  
+  .dropdown-menu {
+    @apply absolute top-full left-0 bg-white min-w-64 shadow-lg rounded-xl py-4 opacity-0 invisible -translate-y-2 transition-all duration-300 border border-pink-200;
+  }
+  
+  .dropdown:hover .dropdown-menu {
+    @apply opacity-100 visible translate-y-0;
+  }
+  
+  .hero-title {
+    @apply font-bold text-3xl md:text-4xl lg:text-5xl leading-tight text-gray-900;
+  }
+  
+  .hero-description {
+    @apply text-lg md:text-xl text-gray-600 leading-relaxed font-normal;
+  }
+  
+  .section-title {
+    @apply font-bold text-4xl md:text-5xl text-gray-900 text-center mb-16;
+  }
+  
+  .card {
+    @apply bg-white rounded-2xl shadow-lg p-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-2;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-pink-600 to-green-600 bg-clip-text text-transparent;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-float-reverse {
+    animation: float-reverse 8s ease-in-out infinite;
+  }
+  
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .prose {
+    @apply text-gray-700 leading-relaxed;
+  }
+  
+  .prose h1 {
+    @apply text-3xl font-bold text-gray-900 mb-6;
+  }
+  
+  .prose h2 {
+    @apply text-2xl font-bold text-gray-900 mb-4;
+  }
+  
+  .prose h3 {
+    @apply text-xl font-semibold text-gray-900 mb-3;
+  }
+  
+  .prose p {
+    @apply mb-4 text-gray-700 leading-relaxed;
+  }
+  
+  .prose ul, .prose ol {
+    @apply mb-4 pl-6;
+  }
+  
+  .prose li {
+    @apply mb-2 text-gray-700;
+  }
+  
+  .prose a {
+    @apply text-pink-600 hover:text-pink-700 underline;
+  }
+  
+  .prose strong {
+    @apply font-semibold text-gray-900;
+  }
+  
+  .prose em {
+    @apply italic text-gray-700;
+  }
+} 

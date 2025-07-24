@@ -1,0 +1,190 @@
+'use client'
+
+import React, { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
+import { Menu, X, ChevronDown } from 'lucide-react'
+import Image from 'next/image'
+
+const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const navigation = [
+    { name: 'Home', href: '#home' },
+    { name: 'About Dr. Salma', href: '#about' },
+    {
+      name: 'Services',
+      href: '#services',
+      dropdown: [
+        { name: 'Hormonal Health Solutions', href: '/hormonal-health' },
+        { name: 'Reproductive & Fertility Health', href: '#reproductive' },
+        { name: 'Energy & Wellness Optimization', href: '#energy' },
+        { name: 'Comprehensive Women\'s Care', href: '#comprehensive' },
+      ]
+    },
+    {
+      name: 'Resources',
+      href: '#resources',
+      dropdown: [
+        { name: 'Blog', href: '/blog' },
+        { name: 'Patient Resources', href: '#patient-resources' },
+        { name: 'FAQ', href: '#faq' },
+      ]
+    },
+    { name: 'Locations', href: '#locations' },
+    { name: 'Contact', href: '#contact' },
+  ]
+
+  return (
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      isScrolled 
+        ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-pink-200' 
+        : 'bg-white/90 backdrop-blur-sm'
+    }`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="flex items-center space-x-4"
+          >
+            <div className="relative w-12 h-12">
+              <Image
+                src="/images/logo.png"
+                alt="Dr. Salma Logo"
+                fill
+                className="object-contain"
+              />
+            </div>
+            <div className="flex flex-col">
+              <div className="flex items-center space-x-2">
+                <h1 className="font-bold text-2xl text-pink-600 leading-tight">
+                  Dr.Salma
+                </h1>
+                <div className="relative w-5 h-5">
+                  <Image
+                    src="/images/butterfly.png"
+                    alt="Butterfly"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+              <p className="text-xs font-medium text-green-600 uppercase tracking-wider">
+                Women Ontario Hub
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center space-x-8">
+            {navigation.map((item) => (
+              <div key={item.name} className="relative group">
+                {item.dropdown ? (
+                  <div className="dropdown">
+                    <button className="nav-link flex items-center space-x-1">
+                      <span>{item.name}</span>
+                      <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
+                    </button>
+                    <div className="dropdown-menu">
+                      {item.dropdown.map((subItem) => (
+                        <a
+                          key={subItem.name}
+                          href={subItem.href}
+                          className="block px-6 py-3 text-sm text-gray-600 hover:text-pink-600 hover:bg-pink-50 transition-all duration-300"
+                        >
+                          {subItem.name}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <a
+                    href={item.href}
+                    className="nav-link"
+                  >
+                    {item.name}
+                  </a>
+                )}
+              </div>
+            ))}
+          </nav>
+
+          {/* CTA Button */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="hidden lg:block"
+          >
+            <button className="bg-gradient-to-r from-pink-600 to-pink-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+              Book Consultation
+            </button>
+          </motion.div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+          >
+            {isMenuOpen ? (
+              <X className="w-6 h-6 text-gray-600" />
+            ) : (
+              <Menu className="w-6 h-6 text-gray-600" />
+            )}
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-t border-gray-200 shadow-lg">
+            <div className="px-4 py-6 space-y-4">
+              {navigation.map((item) => (
+                <div key={item.name}>
+                  <a
+                    href={item.href}
+                    className="block py-3 text-lg font-medium text-gray-800 hover:text-pink-600 transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </a>
+                  {item.dropdown && (
+                    <div className="ml-4 space-y-2">
+                      {item.dropdown.map((subItem) => (
+                        <a
+                          key={subItem.name}
+                          href={subItem.href}
+                          className="block py-2 text-sm text-gray-600 hover:text-pink-600 transition-colors"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {subItem.name}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+              <div className="pt-4">
+                <button className="w-full bg-gradient-to-r from-pink-600 to-pink-700 text-white px-6 py-3 rounded-xl font-semibold">
+                  Book Consultation
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </header>
+  )
+}
+
+export default Header 
