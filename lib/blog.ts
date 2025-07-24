@@ -31,27 +31,44 @@ export interface BlogPost {
 // Get all published blog posts (simplified version)
 export async function getBlogPosts(): Promise<BlogPost[]> {
   try {
+    console.log('🔍 Starting to fetch blog posts from Firebase...');
+    
     // Get all posts first, then filter client-side to avoid index issues
     const querySnapshot = await getDocs(collection(db, 'blog-posts'));
     
-    const allPosts = querySnapshot.docs.map(doc => ({
-      id: doc.id,
-      ...doc.data()
-    })) as BlogPost[];
+    console.log(`📊 Raw Firebase response: ${querySnapshot.docs.length} documents found`);
+    
+    const allPosts = querySnapshot.docs.map(doc => {
+      const data = doc.data();
+      console.log(`📄 Document ${doc.id}:`, { 
+        title: data.title, 
+        published: data.published, 
+        createdAt: data.createdAt 
+      });
+      return {
+        id: doc.id,
+        ...data
+      };
+    }) as BlogPost[];
 
     // Filter published posts and sort by date
     const publishedPosts = allPosts
-      .filter(post => post.published === true)
+      .filter(post => {
+        const isPublished = post.published === true;
+        console.log(`🔍 Post "${post.title}": published=${post.published}, isPublished=${isPublished}`);
+        return isPublished;
+      })
       .sort((a, b) => {
         const dateA = a.createdAt?.toDate?.() || a.createdAt || new Date(0);
         const dateB = b.createdAt?.toDate?.() || b.createdAt || new Date(0);
         return new Date(dateB).getTime() - new Date(dateA).getTime();
       });
 
-    console.log(`Found ${publishedPosts.length} published posts out of ${allPosts.length} total`);
+    console.log(`✅ Found ${publishedPosts.length} published posts out of ${allPosts.length} total`);
+    console.log('📝 Published posts:', publishedPosts.map(p => ({ title: p.title, id: p.id })));
     return publishedPosts;
   } catch (error) {
-    console.error('Error getting blog posts:', error);
+    console.error('❌ Error getting blog posts:', error);
     return [];
   }
 }
@@ -92,14 +109,26 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
 // Create new blog post
 export async function createBlogPost(post: Omit<BlogPost, 'id' | 'createdAt' | 'updatedAt'>): Promise<string> {
   try {
-    const docRef = await addDoc(collection(db, 'blog-posts'), {
+    console.log('🚀 Creating new blog post:', { 
+      title: post.title, 
+      published: post.published, 
+      slug: post.slug 
+    });
+    
+    const postData = {
       ...post,
       createdAt: serverTimestamp(),
       updatedAt: serverTimestamp(),
-    });
+    };
+    
+    console.log('📝 Post data to save:', postData);
+    
+    const docRef = await addDoc(collection(db, 'blog-posts'), postData);
+    
+    console.log('✅ Blog post created successfully with ID:', docRef.id);
     return docRef.id;
   } catch (error) {
-    console.error('Error creating blog post:', error);
+    console.error('❌ Error creating blog post:', error);
     throw error;
   }
 }
