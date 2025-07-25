@@ -197,7 +197,7 @@ const HashimotosHero = () => {
                   
                   <div className="relative p-3">
                     <Image
-                      src="/images/salma-1.png"
+                      src="/images/pic25.png"
                       alt="Dr. Salma - Hashimoto's Management Specialist"
                       width={500}
                       height={600}
@@ -207,32 +207,9 @@ const HashimotosHero = () => {
                     <div className="absolute inset-3 bg-gradient-to-t from-blue-900/10 via-transparent to-transparent rounded-[1.8rem]"></div>
                   </div>
                   
-                                     {/* Credential Badge */}
-                   <div className="absolute bottom-6 right-6 bg-white/95 backdrop-blur-md rounded-2xl px-5 py-4 shadow-lg border border-green-200/50">
-                     <div className="flex items-center space-x-3">
-                       <div className="w-3 h-3 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full animate-pulse"></div>
-                       <span className="text-sm font-semibold text-gray-700 tracking-wide">Thyroid Expert</span>
-                     </div>
-                   </div>
+
                    
-                   {/* Floating Elements */}
-                   <motion.div
-                     className="absolute -top-3 -left-3 w-6 h-6 bg-gradient-to-br from-green-300/60 to-emerald-300/60 rounded-full"
-                    animate={{ 
-                      scale: [1, 1.2, 1],
-                      opacity: [0.6, 0.8, 0.6]
-                    }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  />
-                  
-                                     <motion.div
-                     className="absolute -bottom-3 -right-3 w-4 h-4 bg-gradient-to-br from-emerald-300/60 to-teal-300/60 rounded-full"
-                    animate={{ 
-                      scale: [1, 1.3, 1],
-                      opacity: [0.6, 0.9, 0.6]
-                    }}
-                    transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                  />
+
                 </div>
               </div>
             </motion.div>

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Heart, Mail, Phone, MapPin, Facebook, Instagram, Linkedin, Youtube } from 'lucide-react'
+import { Heart, Mail, Phone, MapPin, Facebook, Instagram, Linkedin, Youtube, MessageCircle } from 'lucide-react'
 import Image from 'next/image'
 
 const Footer = () => {
@@ -29,7 +29,7 @@ const Footer = () => {
   return (
     <footer className="bg-white border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
           
           {/* Column 1 - Dr. Salma Branding */}
           <motion.div
@@ -162,18 +162,30 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
             viewport={{ once: true }}
-            className="space-y-6"
+            className="space-y-6 lg:col-span-2"
           >
             <h3 className="text-lg font-semibold text-gray-900">Contact Us</h3>
             <div className="space-y-4">
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-pink-600" />
-                <span className="text-gray-600">+1 (555) 123-4567</span>
+                <a 
+                  href="tel:+12892186803" 
+                  className="text-gray-600 hover:text-pink-600 transition-colors duration-300"
+                >
+                  +1 (289) 218-6803
+                </a>
               </div>
+
               <div className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 text-pink-600" />
-                <span className="text-gray-600">info@drsalma.com</span>
+                <MessageCircle className="w-5 h-5 text-pink-600" />
+                <a 
+                  href="mailto:info@drsalmawomenontariohub.com" 
+                  className="text-gray-600 hover:text-pink-600 transition-colors duration-300"
+                >
+                  info@drsalmawomenontariohub.com
+                </a>
               </div>
+
               <div className="flex items-center space-x-3">
                 <MapPin className="w-5 h-5 text-pink-600" />
                 <span className="text-gray-600">Ontario, Canada</span>

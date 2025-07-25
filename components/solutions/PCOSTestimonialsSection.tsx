@@ -99,7 +99,7 @@ const PCOSTestimonialsSection = () => {
           <div className="grid lg:grid-cols-3 gap-8">
             <div className="relative rounded-2xl overflow-hidden shadow-lg">
               <Image
-                src="/images/girl-1.png"
+                src="/images/pic22.png"
                 alt="Before transformation"
                 width={400}
                 height={300}
@@ -113,7 +113,7 @@ const PCOSTestimonialsSection = () => {
             
             <div className="relative rounded-2xl overflow-hidden shadow-lg">
               <Image
-                src="/images/banner-5.png"
+                src="/images/pic23.png"
                 alt="During transformation"
                 width={400}
                 height={300}
@@ -127,7 +127,7 @@ const PCOSTestimonialsSection = () => {
             
             <div className="relative rounded-2xl overflow-hidden shadow-lg">
               <Image
-                src="/images/banner-6.png"
+                src="/images/pic24.png"
                 alt="After transformation"
                 width={400}
                 height={300}

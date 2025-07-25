@@ -187,67 +187,7 @@ const HormonalHero = () => {
                     <div className="absolute inset-3 bg-gradient-to-t from-rose-900/10 via-transparent to-transparent rounded-[1.8rem]"></div>
                   </div>
                   
-                  {/* Credential Badge */}
-                  <div className="absolute bottom-6 right-6 bg-white/95 backdrop-blur-md rounded-2xl px-5 py-4 shadow-lg border border-rose-200/50">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-3 h-3 bg-gradient-to-r from-rose-400 to-pink-400 rounded-full animate-pulse"></div>
-                      <span className="text-sm font-semibold text-gray-700 tracking-wide">Hormonal Health Expert</span>
-                    </div>
-                  </div>
-                  
-                  {/* Floating Elements */}
-                  <motion.div
-                    className="absolute -top-3 -left-3 w-6 h-6 bg-gradient-to-br from-rose-300/60 to-pink-300/60 rounded-full"
-                    animate={{ 
-                      scale: [1, 1.2, 1],
-                      opacity: [0.6, 0.8, 0.6]
-                    }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  />
-                  
-                  <motion.div
-                    className="absolute -bottom-3 -right-3 w-4 h-4 bg-gradient-to-br from-pink-300/60 to-purple-300/60 rounded-full"
-                    animate={{ 
-                      scale: [1, 1.3, 1],
-                      opacity: [0.6, 0.9, 0.6]
-                    }}
-                    transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                  />
-                </div>
-              </div>
-            </motion.div>
 
-            {/* Floating Cards */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 1 }}
-              className="absolute -bottom-8 -left-8 bg-white/90 backdrop-blur-md rounded-2xl p-6 shadow-soft border border-rose-200/30"
-            >
-              <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-gradient-to-br from-primary-green to-emerald-500 rounded-full flex items-center justify-center">
-                  <Sparkles className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-primary-green">Natural Solutions</h4>
-                  <p className="text-sm text-text-gray">Restore hormonal balance</p>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 1.2 }}
-              className="absolute -top-8 -right-8 bg-white/90 backdrop-blur-md rounded-2xl p-6 shadow-soft border border-rose-200/30"
-            >
-              <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-gradient-to-br from-primary-pink to-rose-500 rounded-full flex items-center justify-center">
-                  <Heart className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <h4 className="font-semibold text-primary-pink">Medical Expertise</h4>
-                  <p className="text-sm text-text-gray">20+ years experience</p>
                 </div>
               </div>
             </motion.div>

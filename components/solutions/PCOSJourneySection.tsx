@@ -103,9 +103,9 @@ const PCOSJourneySection = () => {
                 <div className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-2xl overflow-hidden shadow-lg border-4 border-white">
                   <Image
                     src={
-                      step.color === 'pink' ? '/images/banner-4.png' : 
-                      step.color === 'green' ? '/images/banner-5.png' : 
-                      '/images/banner-6.png'
+                      step.color === 'pink' ? '/images/pic18.png' : 
+                      step.color === 'green' ? '/images/pic19.png' : 
+                      '/images/pic20.png'
                     }
                     alt={step.title}
                     width={384}

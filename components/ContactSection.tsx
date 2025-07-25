@@ -6,10 +6,10 @@ import { CheckCircle, Mail, Clock, Phone, Paperclip, Mic, ChevronDown, ArrowRigh
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
-    name: 'Ahmed Anwar',
-    email: 'ahmedanwarabdulaziz@gmail.com',
-    phone: '01111101753',
-    consultationType: 'Menopause & Perimenopause Support',
+    name: '',
+    email: '',
+    phone: '',
+    consultationType: '',
     contactMethod: 'phone',
     message: ''
   })
@@ -143,7 +143,7 @@ const ContactSection = () => {
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="w-5 h-5 text-pink-600" />
-                  <span className="text-gray-600">info@drsalma.com</span>
+                  <span className="text-gray-600">info@drsalmawomenontariohub.com</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Clock className="w-5 h-5 text-pink-600" />

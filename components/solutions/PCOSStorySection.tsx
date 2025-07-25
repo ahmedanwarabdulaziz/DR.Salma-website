@@ -172,38 +172,38 @@ const PCOSStorySection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
-          className="mt-20 bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl p-12 border border-green-200/30"
+          className="mt-20 bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl p-6 md:p-12 border border-green-200/30"
         >
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <div className="space-y-6">
-              <h3 className="text-3xl font-bold text-green-600">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+            <div className="space-y-4 md:space-y-6">
+              <h3 className="text-2xl md:text-3xl font-bold text-green-600">
                 Dr. Salma Sees You—Really Sees You
               </h3>
-              <h4 className="text-2xl font-semibold text-gray-800">
+              <h4 className="text-xl md:text-2xl font-semibold text-gray-800">
                 Finally, Someone Who Gets It
               </h4>
-              <p className="text-lg text-gray-700 leading-relaxed">
+              <p className="text-base md:text-lg text-gray-700 leading-relaxed">
                 After 20+ years as a gynecologist, Dr. Salma witnessed countless women like you walk through her office doors. She saw the pain in their eyes when they were handed another prescription without real answers. She felt their frustration when they were dismissed or misunderstood.
               </p>
-              <p className="text-lg text-gray-700 leading-relaxed">
+              <p className="text-base md:text-lg text-gray-700 leading-relaxed">
                 That's why she made a life-changing decision. She left conventional medicine to become a naturopath—not because she stopped believing in medical expertise, but because she knew women deserved so much more.
               </p>
             </div>
             
-            <div className="relative h-full min-h-[500px]">
+            <div className="relative h-full min-h-[300px] md:min-h-[400px] lg:min-h-[500px] mt-6 lg:mt-0">
               <Image
-                src="/images/banner-1.png"
+                src="/images/pic16.png"
                 alt="Dr. Salma understanding women's health"
                 width={600}
                 height={600}
                 className="w-full h-full object-cover rounded-2xl shadow-lg"
               />
-              <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-6 shadow-lg border border-green-200">
-                <div className="flex items-center space-x-3">
-                  <User className="w-8 h-8 text-green-600" />
+              <div className="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 bg-white rounded-2xl p-4 md:p-6 shadow-lg border border-green-200">
+                <div className="flex items-center space-x-2 md:space-x-3">
+                  <User className="w-6 h-6 md:w-8 md:h-8 text-green-600" />
                   <div>
-                    <p className="font-semibold text-gray-800">Your Gentle Transformation Partner</p>
-                    <p className="text-sm text-gray-600">Compassionate care that understands</p>
+                    <p className="font-semibold text-gray-800 text-sm md:text-base">Your Gentle Transformation Partner</p>
+                    <p className="text-xs md:text-sm text-gray-600">Compassionate care that understands</p>
                   </div>
                 </div>
               </div>
@@ -211,17 +211,17 @@ const PCOSStorySection = () => {
           </div>
           
           {/* Additional Image - Full Width */}
-          <div className="relative mt-12">
+          <div className="relative mt-8 md:mt-12">
             <Image
-              src="/images/banner-8.png"
+              src="/images/pic17.png"
               alt="Women supporting each other"
               width={1200}
               height={400}
-              className="w-full h-64 object-cover rounded-2xl shadow-lg"
+              className="w-full h-48 md:h-64 object-cover rounded-2xl shadow-lg"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent rounded-2xl"></div>
-            <div className="absolute bottom-4 left-4 text-white">
-              <p className="text-sm font-medium">You're not alone in this journey</p>
+            <div className="absolute bottom-3 left-3 md:bottom-4 md:left-4 text-white">
+              <p className="text-xs md:text-sm font-medium">You're not alone in this journey</p>
             </div>
           </div>
         </motion.div>

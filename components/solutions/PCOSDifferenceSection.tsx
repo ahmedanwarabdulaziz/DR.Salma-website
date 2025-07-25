@@ -134,7 +134,7 @@ const PCOSDifferenceSection = () => {
             </div>
             <div className="relative h-full min-h-[500px]">
               <Image
-                src="/images/banner-7.png"
+                src="/images/pic21.png"
                 alt="Dr. Salma's approach to PCOS"
                 width={600}
                 height={600}
