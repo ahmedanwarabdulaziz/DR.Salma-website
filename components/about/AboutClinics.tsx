@@ -7,14 +7,9 @@ import { MapPin, Building, Users, Clock, Globe } from 'lucide-react'
 const AboutClinics = () => {
   const clinics = [
     {
-      name: "Aurika Wellness",
-      description: "Dr. Salma provides her specialized women's health services at this premium wellness center, offering comprehensive natural health services in a professional environment. The collaborative care model allows for integrated treatment approaches with other wellness practitioners.",
-      features: ["Premium wellness center", "Collaborative care model", "Integrated treatment approaches", "Professional environment"]
-    },
-    {
-      name: "Eternal Wellness",
-      description: "At this established wellness clinic with a focus on integrative health approaches, Dr. Salma delivers her unique medical-naturopathic expertise using state-of-the-art facilities. The multidisciplinary team environment supports comprehensive women's health needs.",
-      features: ["Integrative health focus", "State-of-the-art facilities", "Multidisciplinary team", "Comprehensive care"]
+      name: "Sea Meadows Rehab",
+      description: "Dr. Salma provides her specialized women's health services at Sea Meadows Rehab, a world-class rehabilitation center offering individualized recovery plans and comprehensive wellness solutions. Located in Oakville, Ontario, this state-of-the-art facility combines advanced treatment methodologies with personalized care approaches, creating an optimal environment for women's health and wellness.",
+      features: ["World-class rehabilitation center", "State-of-the-art facilities", "Individualized care plans", "Comprehensive wellness solutions", "Located in Oakville, Ontario"]
     }
   ]
 
@@ -37,15 +32,15 @@ const AboutClinics = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-primary-green mb-4">
-            Clinic Partnerships & Locations
+            Clinic Partnership & Location
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Professional Practice Settings for Your Care
+            Professional Practice Setting for Your Care
           </p>
         </motion.div>
 
-        {/* Clinics Grid */}
-        <div className="grid lg:grid-cols-2 gap-8 mb-16">
+        {/* Clinic Information */}
+        <div className="max-w-4xl mx-auto mb-16">
           {clinics.map((clinic, index) => (
             <motion.div
               key={index}
@@ -137,10 +132,10 @@ const AboutClinics = () => {
           <div className="bg-gradient-to-br from-green-100 to-emerald-100 rounded-3xl p-8 border border-green-300/30 max-w-3xl mx-auto">
             <Building className="w-12 h-12 text-primary-green mx-auto mb-4" />
             <h3 className="text-2xl font-bold text-gray-800 mb-4">
-              Professional Care Environments
+              Professional Care Environment
             </h3>
             <p className="text-gray-600 mb-6">
-              Whether you prefer in-person consultations at our partner clinics or the convenience of virtual care, Dr. Salma provides the same high-quality, comprehensive women's health services in a professional and comfortable environment.
+              Whether you prefer in-person consultations at Sea Meadows Rehab or the convenience of virtual care, Dr. Salma provides the same high-quality, comprehensive women's health services in a professional and comfortable environment.
             </p>
             <button className="btn-primary group">
               <span className="flex items-center">

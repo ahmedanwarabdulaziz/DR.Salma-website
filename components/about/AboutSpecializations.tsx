@@ -16,7 +16,7 @@ const AboutSpecializations = () => {
       ]
     },
     {
-      category: "Reproductive & Fertility Health",
+      category: "Infertility and un-explained infertility",
       icon: Leaf,
       services: [
         "Unexplained Infertility Solutions: Root cause investigation and natural support for conception",

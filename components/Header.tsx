@@ -33,7 +33,7 @@ const Header = () => {
                               { name: 'Hashimoto\'s Thyroiditis Management', href: '/hashimotos-thyroiditis' }
                             ]
                           },
-        { name: 'Reproductive & Fertility Health', href: '#reproductive' },
+        { name: 'Infertility and un-explained infertility', href: '#reproductive' },
         { name: 'Energy & Wellness Optimization', href: '#energy' },
         { name: 'Comprehensive Women\'s Care', href: '#comprehensive' },
       ]

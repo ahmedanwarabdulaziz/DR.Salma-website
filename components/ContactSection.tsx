@@ -22,7 +22,7 @@ const ContactSection = () => {
 
   const consultationTypes = [
     "Hormonal Health Solutions",
-    "Reproductive & Fertility Health",
+    "Infertility and un-explained infertility",
     "Energy & Wellness Optimization",
     "Menopause & Perimenopause Support",
     "PCOS Management",
@@ -139,7 +139,7 @@ const ContactSection = () => {
               <div className="space-y-3">
                 <div className="flex items-center space-x-3">
                   <Phone className="w-5 h-5 text-pink-600" />
-                  <span className="text-gray-600">+1 (555) 123-4567</span>
+                  <span className="text-gray-600">+1 (289) 218-6803</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="w-5 h-5 text-pink-600" />
@@ -147,7 +147,7 @@ const ContactSection = () => {
                 </div>
                 <div className="flex items-center space-x-3">
                   <Clock className="w-5 h-5 text-pink-600" />
-                  <span className="text-gray-600">Mon-Fri: 9AM-6PM</span>
+                  <span className="text-gray-600">Mon-Sat: 9AM-6PM</span>
                 </div>
               </div>
             </motion.div>

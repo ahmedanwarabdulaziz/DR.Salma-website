@@ -45,7 +45,7 @@ const AboutExpertise = () => {
       title: "Integrative Bridge",
       description: "Only practitioner who can confidently navigate both conventional and natural medicine worlds",
       features: [
-        "Seamless integration of medical diagnostic skills with comprehensive natural solutions",
+        "Smooth fusion of thorough natural remedies with medical diagnostic expertise",
         "Evidence-based approach combining medical knowledge with natural health research",
         "Collaborative care with existing healthcare teams"
       ],

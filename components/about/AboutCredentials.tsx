@@ -3,6 +3,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { CheckCircle, GraduationCap, Award, BookOpen, Globe } from 'lucide-react'
+import Link from 'next/link'
 
 const AboutCredentials = () => {
   const credentials = [
@@ -10,7 +11,7 @@ const AboutCredentials = () => {
     "Licensed Naturopathic Doctor",
     "Clinical Homeopathy Specialist (CEDH)",
     "Traditional Chinese Medicine & Acupuncture",
-    "Available at Aurika Wellness & Eternal Wellness"
+    "Available at Sea Meadows Rehab"
   ]
 
   const education = [
@@ -80,7 +81,18 @@ const AboutCredentials = () => {
                     className="flex items-center space-x-3"
                   >
                     <CheckCircle className="w-6 h-6 text-primary-green flex-shrink-0" />
-                    <span className="text-gray-700 font-medium">{credential}</span>
+                    {credential === "Available at Sea Meadows Rehab" ? (
+                      <Link 
+                        href="https://seameadowsrehab.ca/" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-gray-700 font-medium hover:text-primary-pink hover:underline transition-colors duration-300"
+                      >
+                        {credential}
+                      </Link>
+                    ) : (
+                      <span className="text-gray-700 font-medium">{credential}</span>
+                    )}
                   </motion.div>
                 ))}
               </div>

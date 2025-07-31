@@ -51,7 +51,7 @@ const DescriptionSection = () => {
                 >
                   <CheckCircle className="w-6 h-6 text-green-600 mt-1 flex-shrink-0" />
                   <span className="text-lg text-gray-600 font-medium">
-                    20+ Years Gynecological Experience
+                    20+ Years Obstetric & Gynecological Experience
                   </span>
                 </motion.div>
                 

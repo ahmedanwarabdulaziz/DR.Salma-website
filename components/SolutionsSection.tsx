@@ -18,10 +18,10 @@ const SolutionsSection = () => {
     },
     {
       id: 2,
-      title: "Reproductive & Fertility Excellence",
+      title: "Infertility and un-explained infertility",
       struggle: "Unexplained fertility challenges, debilitating menstrual disorders, or reproductive health concerns requiring specialized diagnostic expertise and innovative treatment protocols",
       provides: "Comprehensive reproductive health assessments utilizing advanced diagnostic technologies, combined with evidence-based integrative therapies and personalized fertility optimization strategies",
-      outcome: "Experience breakthrough reproductive health outcomes through cutting-edge diagnostics and tailored therapeutic interventions designed for your unique physiology",
+      outcome: "Within 6 months of comprehensive treatment, achieve harmonized menstrual cycles, enhanced sperm quality, and significantly increased pregnancy probability through evidence-based integrative fertility protocols",
       buttons: ["Unexplained Infertility Solutions", "Endometriosis Pain Management", "Menopause & Perimenopause Support"],
       image: "/images/banner-2.png"
     },

@@ -4,6 +4,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { CheckCircle, Heart, Leaf, User, ArrowRight } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const AboutSection = () => {
   const whyChoosePoints = [
@@ -15,7 +16,7 @@ const AboutSection = () => {
     {
       icon: <Leaf className="w-6 h-6 text-green-600" />,
       title: "Natural Expertise:",
-      description: "Comprehensive natural therapies including homeopathy, TCM, and acupuncture for gentle, effective healing."
+      description: "Comprehensive natural therapies including homeopathy, TCM, acupuncture, botanical, nutritional and physical therapy for gentle, effective healing."
     },
     {
       icon: <Heart className="w-6 h-6 text-pink-600" />,
@@ -30,11 +31,11 @@ const AboutSection = () => {
   ]
 
   const qualifications = [
-    "20+ Years Gynecological Experience",
+    "20+ Years Obstetric & Gynecological Experience",
     "Licensed Naturopathic Doctor",
     "Clinical Homeopathy Specialist (CEDH)",
     "Traditional Chinese Medicine & Acupuncture",
-    "Available at Aurika Wellness & Eternal Wellness"
+    "Available at Sea Meadows Rehab"
   ]
 
   return (
@@ -159,7 +160,18 @@ const AboutSection = () => {
                     className="flex items-center space-x-3"
                   >
                     <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
-                    <span className="text-gray-600">{qualification}</span>
+                    {qualification === "Available at Sea Meadows Rehab" ? (
+                      <Link 
+                        href="https://seameadowsrehab.ca/" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-gray-600 hover:text-pink-600 hover:underline transition-colors duration-300"
+                      >
+                        {qualification}
+                      </Link>
+                    ) : (
+                      <span className="text-gray-600">{qualification}</span>
+                    )}
                   </motion.div>
                 ))}
               </div>
