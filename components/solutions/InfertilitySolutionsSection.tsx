@@ -5,40 +5,40 @@ import { motion } from 'framer-motion'
 import { CheckCircle, ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 
-const HormonalSolutionsSection = () => {
+const InfertilitySolutionsSection = () => {
   const solutions = [
     {
       id: 1,
-      title: "PCOS Management",
-      image: "/images/banner-6.png",
-      description: "Finally understand your body's signals and break free from the weight struggle",
+      title: "Unexplained Infertility Solutions",
+      image: "/images/pic43.png",
+      description: "Find hidden factors and create gentle, hope-restoring treatment plans",
       features: [
-        "Comprehensive assessment and natural protocols",
-        "Medical expertise for complex lab interpretation"
+        "Root-cause analysis and comprehensive diagnostics",
+        "Gentle, personalized action plans"
       ],
-      cta: "PCOS Solutions"
+      cta: "Unexplained Infertility Solutions"
     },
     {
       id: 2,
-      title: "Hashimoto's Thyroiditis Management",
-      image: "/images/banner-7.png",
-      description: "End the exhaustion and brain fog - feel in control of your body again",
+      title: "Endometriosis Pain Management",
+      image: "/images/pic44.png",
+      description: "Relieve pain, reduce inflammation, and promote fertility using integrative approaches",
       features: [
-        "In-depth thyroid function analysis",
-        "Integrative approach beyond medication"
+        "Comprehensive pain management protocols",
+        "Fertility-supporting natural approaches"
       ],
-      cta: "Discover Thyroid Solutions"
+      cta: "Endometriosis Solutions"
     },
     {
       id: 3,
-      title: "Hormonal Acne Treatment",
-      image: "/images/banner-8.png",
-      description: "See your true beauty shine through - feel comfortable in your own skin",
+      title: "Menopause & Perimenopause Support",
+      image: "/images/pic45.png",
+      description: "Address late reproductive concerns and support overall hormone balance",
       features: [
-        "Root cause hormonal trigger identification",
-        "Personalized skin and hormonal health protocols"
+        "Expert midlife fertility care",
+        "Comprehensive hormonal balance support"
       ],
-      cta: "Clear Skin Solutions"
+      cta: "Menopause Support"
     }
   ]
 
@@ -54,10 +54,10 @@ const HormonalSolutionsSection = () => {
           className="text-center mb-16"
         >
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-primary-green mb-6">
-            Hormonal Health Solutions
+            Solutions Within This Category
           </h2>
           <p className="text-xl text-text-gray max-w-3xl mx-auto leading-relaxed">
-            Dr. Salma provides comprehensive hormonal health solutions that address the root causes of your symptoms, not just the surface issues.
+            Dr. Salma provides comprehensive fertility solutions that address the root causes of infertility, not just the symptoms.
           </p>
         </motion.div>
 
@@ -132,7 +132,7 @@ const HormonalSolutionsSection = () => {
         >
           <button className="btn-primary group">
             <span className="flex items-center">
-              Book Your Hormonal Health Consultation
+              Book Your Appointment Now
               <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
             </span>
           </button>
@@ -142,4 +142,4 @@ const HormonalSolutionsSection = () => {
   )
 }
 
-export default HormonalSolutionsSection 
+export default InfertilitySolutionsSection 

@@ -5,40 +5,29 @@ import { motion } from 'framer-motion'
 import { CheckCircle, ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 
-const HormonalSolutionsSection = () => {
+const ComprehensiveSolutionsSection = () => {
   const solutions = [
     {
       id: 1,
-      title: "PCOS Management",
-      image: "/images/banner-6.png",
-      description: "Finally understand your body's signals and break free from the weight struggle",
+      title: "General Women's Wellness",
+      image: "/images/pic53.png",
+      description: "Preventive health screenings, personalized wellness planning, and ongoing assessments for all aspects of women's health.",
       features: [
-        "Comprehensive assessment and natural protocols",
-        "Medical expertise for complex lab interpretation"
+        "Comprehensive health assessments",
+        "Personalized wellness planning"
       ],
-      cta: "PCOS Solutions"
+      cta: "General Wellness"
     },
     {
       id: 2,
-      title: "Hashimoto's Thyroiditis Management",
-      image: "/images/banner-7.png",
-      description: "End the exhaustion and brain fog - feel in control of your body again",
+      title: "Classical Homeopathy",
+      image: "/images/pic54.png",
+      description: "Individualized, gentle, constitutional treatments that honor your unique patterns, helping you heal deeply and holistically.",
       features: [
-        "In-depth thyroid function analysis",
-        "Integrative approach beyond medication"
+        "Individualized constitutional treatments",
+        "Deep, holistic healing support"
       ],
-      cta: "Discover Thyroid Solutions"
-    },
-    {
-      id: 3,
-      title: "Hormonal Acne Treatment",
-      image: "/images/banner-8.png",
-      description: "See your true beauty shine through - feel comfortable in your own skin",
-      features: [
-        "Root cause hormonal trigger identification",
-        "Personalized skin and hormonal health protocols"
-      ],
-      cta: "Clear Skin Solutions"
+      cta: "Homeopathy Care"
     }
   ]
 
@@ -54,10 +43,10 @@ const HormonalSolutionsSection = () => {
           className="text-center mb-16"
         >
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-primary-green mb-6">
-            Hormonal Health Solutions
+            Solutions in This Group
           </h2>
           <p className="text-xl text-text-gray max-w-3xl mx-auto leading-relaxed">
-            Dr. Salma provides comprehensive hormonal health solutions that address the root causes of your symptoms, not just the surface issues.
+            Dr. Salma provides comprehensive women's care solutions that address the whole person—body, mind, and spirit.
           </p>
         </motion.div>
 
@@ -132,7 +121,7 @@ const HormonalSolutionsSection = () => {
         >
           <button className="btn-primary group">
             <span className="flex items-center">
-              Book Your Hormonal Health Consultation
+              Book Your Appointment Now
               <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
             </span>
           </button>
@@ -142,4 +131,4 @@ const HormonalSolutionsSection = () => {
   )
 }
 
-export default HormonalSolutionsSection 
+export default ComprehensiveSolutionsSection 

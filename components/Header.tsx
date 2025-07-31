@@ -22,20 +22,44 @@ const Header = () => {
     { name: 'Home', href: '/' },
     { name: 'About Dr. Salma', href: '/about' },
     {
-      name: 'Services',
-                              href: '#services',
-                        dropdown: [
-                          { 
-                            name: 'Hormonal Health Solutions', 
-                            href: '/hormonal-health',
-                            children: [
-                              { name: 'PCOS Management', href: '/pcos-management' },
-                              { name: 'Hashimoto\'s Thyroiditis Management', href: '/hashimotos-thyroiditis' }
-                            ]
-                          },
-        { name: 'Infertility and un-explained infertility', href: '#reproductive' },
-        { name: 'Energy & Wellness Optimization', href: '#energy' },
-        { name: 'Comprehensive Women\'s Care', href: '#comprehensive' },
+      name: 'Solutions',
+      href: '#solutions',
+      dropdown: [
+        { 
+          name: 'Hormonal Health Solutions', 
+          href: '/hormonal-health',
+          children: [
+            { name: 'PCOS Management', href: '/pcos-management' },
+            { name: 'Hashimoto\'s Thyroiditis Management', href: '/hashimotos-thyroiditis' },
+            { name: 'Hormonal Acne Treatment', href: '/hormonal-acne-treatment' }
+          ]
+        },
+        { 
+          name: 'Infertility & Unexplained Infertility', 
+          href: '/infertility-unexplained-infertility',
+          children: [
+            { name: 'Unexplained Infertility Solutions', href: '/unexplained-infertility-solutions' },
+            { name: 'Endometriosis Pain Management', href: '/endometriosis-pain-management' },
+            { name: 'Menopause & Perimenopause Support', href: '/menopause-perimenopause-support' }
+          ]
+        },
+        { 
+          name: 'Energy & Wellness Optimization', 
+          href: '/energy-wellness-optimization',
+          children: [
+            { name: 'Chronic Fatigue & Energy Optimization', href: '/chronic-fatigue-energy-optimization' },
+            { name: 'Anxiety Linked to Hormonal Imbalances', href: '/anxiety-hormonal-imbalances' },
+            { name: 'Pain Management (TCM/Acupuncture)', href: '/pain-management-tcm-acupuncture' }
+          ]
+        },
+        { 
+          name: 'Comprehensive Women\'s Care', 
+          href: '/comprehensive-womens-care',
+          children: [
+            { name: 'General Women\'s Wellness', href: '/general-womens-wellness' },
+            { name: 'Classical Homeopathy', href: '/classical-homeopathy' }
+          ]
+        },
       ]
     },
     {
@@ -43,12 +67,12 @@ const Header = () => {
       href: '#resources',
       dropdown: [
         { name: 'Blog', href: '/blog' },
-        { name: 'Patient Resources', href: '#patient-resources' },
-        { name: 'FAQ', href: '#faq' },
+        { name: 'Patient Resources', href: '/patient-resources' },
+        { name: 'FAQ', href: '/faq' },
       ]
     },
-    { name: 'Locations', href: '#locations' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Locations', href: '/locations' },
+    { name: 'Contact', href: '/contact' },
   ]
 
   return (

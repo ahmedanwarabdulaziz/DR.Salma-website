@@ -25,7 +25,7 @@ const PCOSJourneySection = () => {
       phase: "Month 6+",
       title: "You Feel Like Yourself Again",
       quote: "I look in the mirror and recognize the confident woman looking back",
-      description: "This is where the magic happens. You're not just managing PCOS anymore—you're thriving despite it. Your hair is growing back. Your confidence is radiating. Your body feels like home again.",
+              description: "This is where the magic happens. You're not just managing PCOS anymore—you're thriving despite it. Your confidence is radiating. Your body feels like home again.",
       color: "purple"
     }
   ]

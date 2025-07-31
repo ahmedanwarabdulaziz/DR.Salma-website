@@ -4,23 +4,24 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { CheckCircle, Mail, Clock, Phone, Paperclip, Mic, ChevronDown, ArrowRight } from 'lucide-react'
 
-const ContactSection = () => {
+const GeneralWellnessContactSection = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    consultationType: '',
+    consultationType: 'General Women\'s Wellness',
     contactMethod: 'phone',
     message: ''
   })
 
   const services = [
-    "Personalized Health Assessment",
-    "Natural & Medical Solutions", 
-    "Ongoing Support & Care"
+    "Comprehensive Wellness Assessment",
+    "Personalized Wellness Plans", 
+    "Preventive Care & Support"
   ]
 
   const consultationTypes = [
+    "General Women's Wellness",
     "Hormonal Health Solutions",
     "Infertility and un-explained infertility",
     "Energy & Wellness Optimization",
@@ -30,8 +31,7 @@ const ContactSection = () => {
     "Chronic Fatigue & Energy Optimization",
     "Anxiety Linked to Hormonal Imbalances",
     "Pain Management (TCM/Acupuncture)",
-    "Classical Homeopathy",
-    "General Women's Wellness"
+    "Classical Homeopathy"
   ]
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -83,8 +83,8 @@ const ContactSection = () => {
               viewport={{ once: true }}
             >
               <h2 className="text-4xl md:text-5xl font-bold text-green-600 text-center lg:text-left mb-6">
-                Let's Start Your{' '}
-                <span className="text-pink-600">Health Journey</span>
+                Begin Your{' '}
+                <span className="text-pink-600">Personalized Wellness Journey</span>
               </h2>
             </motion.div>
 
@@ -96,7 +96,7 @@ const ContactSection = () => {
               viewport={{ once: true }}
             >
               <p className="text-lg text-gray-600 leading-relaxed text-center lg:text-left mb-8">
-                Dr. Salma combines medical expertise with natural healing to provide comprehensive women's health solutions. Get personalized care that addresses your unique health needs and empowers you to take control of your wellness journey.
+                Dr. Salma combines medical expertise with compassionate care to provide comprehensive women's wellness solutions. Get personalized care that addresses your unique health needs and empowers you to take control of your wellness journey.
               </p>
             </motion.div>
 
@@ -200,7 +200,7 @@ const ContactSection = () => {
               {/* Phone */}
               <div>
                 <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                  Phone Number
+                  Phone Number (optional)
                 </label>
                 <input
                   type="tel"
@@ -215,7 +215,7 @@ const ContactSection = () => {
               {/* Consultation Type */}
               <div>
                 <label htmlFor="consultationType" className="block text-sm font-medium text-gray-700 mb-2">
-                  Consultation Type
+                  I'm interested in:
                 </label>
                 <select
                   id="consultationType"
@@ -266,7 +266,7 @@ const ContactSection = () => {
               {/* Message */}
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  Additional Information (Optional)
+                  Your Message (How can we support you, or what would you like us to know?)
                 </label>
                 <textarea
                   id="message"
@@ -275,8 +275,22 @@ const ContactSection = () => {
                   onChange={handleInputChange}
                   rows={4}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"
-                  placeholder="Tell us about your health concerns..."
+                  placeholder="Tell us about your wellness goals..."
                 />
+              </div>
+
+              {/* Consent Checkbox */}
+              <div>
+                <label className="flex items-start space-x-3">
+                  <input
+                    type="checkbox"
+                    required
+                    className="mt-1 text-pink-600 focus:ring-pink-500"
+                  />
+                  <span className="text-sm text-gray-700">
+                    I consent to Dr. Salma's team replying to my inquiry.
+                  </span>
+                </label>
               </div>
 
               {/* Submit Button */}
@@ -288,10 +302,17 @@ const ContactSection = () => {
                 viewport={{ once: true }}
                 className="w-full bg-pink-600 text-white py-4 px-8 rounded-full font-semibold hover:bg-pink-700 transition-colors duration-300 flex items-center justify-center space-x-2 group"
               >
-                <span>Book Your Consultation</span>
+                <span>Send My Message</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
               </motion.button>
             </form>
+
+            {/* Bottom Note */}
+            <div className="mt-6 text-center">
+              <p className="text-sm text-gray-600">
+                We reply within one business day. Your information is kept 100% confidential.
+              </p>
+            </div>
           </motion.div>
         </div>
       </div>
@@ -299,4 +320,4 @@ const ContactSection = () => {
   )
 }
 
-export default ContactSection 
+export default GeneralWellnessContactSection 

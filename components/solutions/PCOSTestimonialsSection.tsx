@@ -10,7 +10,7 @@ const PCOSTestimonialsSection = () => {
     {
       name: "Sarah",
       location: "Toronto",
-      story: "I was 32 and felt like I was living in someone else's body. Eight years of PCOS had stolen my confidence, my energy, and my hope. Dr. Salma was the first person who looked me in the eyes and said, 'I believe you, and we're going to figure this out together.'",
+      story: "I was 23 and felt like I was living in someone else's body. Three years of PCOS had stolen my confidence, my energy, and my hope. Dr. Salma was the first person who looked me in the eyes and said, 'I believe you, and we're going to figure this out together.'",
       result: "She didn't just treat my PCOS—she helped me fall in love with my body again. Six months later, I've lost 25 pounds, my skin is glowing, my hair is growing back, and most importantly, I feel like ME again.",
       rating: 5
     },

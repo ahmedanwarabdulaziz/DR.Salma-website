@@ -5,40 +5,40 @@ import { motion } from 'framer-motion'
 import { CheckCircle, ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 
-const HormonalSolutionsSection = () => {
+const EnergySolutionsSection = () => {
   const solutions = [
     {
       id: 1,
-      title: "PCOS Management",
-      image: "/images/banner-6.png",
-      description: "Finally understand your body's signals and break free from the weight struggle",
+      title: "Chronic Fatigue & Energy Optimization",
+      image: "/images/pic48.png",
+      description: "Break the cycle of exhaustion, restore your vitality",
       features: [
-        "Comprehensive assessment and natural protocols",
-        "Medical expertise for complex lab interpretation"
+        "Root-cause analysis and comprehensive diagnostics",
+        "Gentle, personalized action plans"
       ],
-      cta: "PCOS Solutions"
+      cta: "Chronic Fatigue Solutions"
     },
     {
       id: 2,
-      title: "Hashimoto's Thyroiditis Management",
-      image: "/images/banner-7.png",
-      description: "End the exhaustion and brain fog - feel in control of your body again",
+      title: "Anxiety Linked to Hormonal Imbalances",
+      image: "/images/pic49.png",
+      description: "Gentle, natural approaches to calming your mind and balancing your body",
       features: [
-        "In-depth thyroid function analysis",
-        "Integrative approach beyond medication"
+        "Comprehensive anxiety management protocols",
+        "Hormonal balance support"
       ],
-      cta: "Discover Thyroid Solutions"
+      cta: "Anxiety Solutions"
     },
     {
       id: 3,
-      title: "Hormonal Acne Treatment",
-      image: "/images/banner-8.png",
-      description: "See your true beauty shine through - feel comfortable in your own skin",
+      title: "Pain Management (TCM/Acupuncture)",
+      image: "/images/pic50.png",
+      description: "Natural relief from pain using Traditional Chinese Medicine and acupuncture",
       features: [
-        "Root cause hormonal trigger identification",
-        "Personalized skin and hormonal health protocols"
+        "Expert TCM and acupuncture care",
+        "Comprehensive pain relief support"
       ],
-      cta: "Clear Skin Solutions"
+      cta: "Pain Management"
     }
   ]
 
@@ -54,10 +54,10 @@ const HormonalSolutionsSection = () => {
           className="text-center mb-16"
         >
           <h2 className="font-heading text-4xl md:text-5xl font-bold text-primary-green mb-6">
-            Hormonal Health Solutions
+            Solutions in This Group
           </h2>
           <p className="text-xl text-text-gray max-w-3xl mx-auto leading-relaxed">
-            Dr. Salma provides comprehensive hormonal health solutions that address the root causes of your symptoms, not just the surface issues.
+            Dr. Salma provides comprehensive energy and wellness solutions that address the root causes of fatigue, anxiety, and pain.
           </p>
         </motion.div>
 
@@ -132,7 +132,7 @@ const HormonalSolutionsSection = () => {
         >
           <button className="btn-primary group">
             <span className="flex items-center">
-              Book Your Hormonal Health Consultation
+              Book Your Appointment Now
               <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
             </span>
           </button>
@@ -142,4 +142,4 @@ const HormonalSolutionsSection = () => {
   )
 }
 
-export default HormonalSolutionsSection 
+export default EnergySolutionsSection 
