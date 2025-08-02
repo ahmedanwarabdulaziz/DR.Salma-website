@@ -11,19 +11,19 @@ const AnxietyJourneySection = () => {
       month: "Month 1–2",
       title: "Lingering Clouds Begin to Lift",
       description: "\"I finally understood why my anxiety flared before my period, and gentle changes made a difference almost right away.\" Hormone-supportive nutrition, practical self-care strategies, and subtle natural tools make anxiety more predictable—and for many, less acute.",
-      image: "/images/pic37.png"
+      image: "/images/pic85.png"
     },
     {
       month: "Month 3–4",
       title: "Calm Becomes Normal Again",
       description: "\"I'm not afraid of my moods anymore; I know how to support myself.\" Emotional outbursts fade, panic decreases, and you feel balanced and steady. The \"cycle\" of dread gives way to real confidence, calm, and control.",
-      image: "/images/pic38.png"
+      image: "/images/pic86.png"
     },
     {
       month: "Month 6+",
       title: "Joy and Comfort in Your Own Mind",
       description: "\"I recognize myself again—joyful, motivated, and able to handle what life brings.\" You wake up with clarity. Relationships feel easier. You trust your feelings instead of fearing them.",
-      image: "/images/pic39.png"
+      image: "/images/pic87.png"
     }
   ]
 

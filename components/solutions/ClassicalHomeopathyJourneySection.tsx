@@ -11,19 +11,19 @@ const ClassicalHomeopathyJourneySection = () => {
       month: "Month 1–2",
       title: "The Shift Begins",
       description: "\"For the first time, I felt truly listened to—not just my symptoms, but how I live and feel.\" Your story is heard—deeply. Dr. Salma honors every detail, so you feel seen, accepted, and supported. Early, subtle shifts often occur: deeper sleep, lighter mood, less overwhelming symptoms.",
-      image: "/images/pic37.png"
+      image: "/images/pic96.png"
     },
     {
       month: "Month 3–4",
       title: "Integration and Hope",
       description: "\"Old patterns fade, and I see progress in ways I never expected.\" Physical complaints ease. Emotional balance returns. You cope with daily life more calmly. \"Impossible\" symptoms finally begin to release their grip.",
-      image: "/images/pic38.png"
+      image: "/images/pic97.png"
     },
     {
       month: "Month 6+",
       title: "Whole-Person Healing",
       description: "\"I feel like myself again—maybe even better.\" Homeopathy supports the body, mind, and spirit. For many, long-standing conditions ease; resilience, energy, and joy take root.",
-      image: "/images/pic39.png"
+      image: "/images/pic98.png"
     }
   ]
 

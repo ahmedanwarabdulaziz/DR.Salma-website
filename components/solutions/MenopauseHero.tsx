@@ -111,7 +111,7 @@ const MenopauseHero = () => {
             className="relative"
           >
             <Image
-              src="/images/pic35.png"
+              src="/images/pic69.png"
               alt="Dr. Salma - Menopause & Perimenopause Support Specialist"
               width={500}
               height={600}

@@ -13,7 +13,7 @@ const ClassicalHomeopathyTestimonialsSection = () => {
       age: 38,
       story: "Every doctor treated one symptom at a time. Dr. Salma listened to all of me—my cycles, my mood, my childhood patterns. One homeopathic remedy changed everything. My energy, sleep, and happiness returned. For the first time, I am whole.",
       result: "Olivia's Whole-Person Healing",
-      image: "/images/pic21.png"
+      image: "/images/pic88.png"
     },
     {
       name: "Fatima",
@@ -21,7 +21,7 @@ const ClassicalHomeopathyTestimonialsSection = () => {
       age: 45,
       story: "My story was complicated. No one wanted to listen—except Dr. Salma. She understood every part of my journey and gave me a gentle remedy that made all the difference. I feel balanced and peaceful, inside and out.",
       result: "Fatima's Gentle Recovery",
-      image: "/images/pic22.png"
+      image: "/images/pic89.png"
     }
   ]
 

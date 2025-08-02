@@ -111,7 +111,7 @@ const ChronicFatigueHero = () => {
             className="relative"
           >
             <Image
-              src="/images/pic35.png"
+              src="/images/pic76.png"
               alt="Dr. Salma - Chronic Fatigue & Energy Optimization Specialist"
               width={500}
               height={600}

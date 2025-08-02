@@ -111,7 +111,7 @@ const AnxietyHero = () => {
             className="relative"
           >
             <Image
-              src="/images/pic35.png"
+              src="/images/pic83.png"
               alt="Dr. Salma - Anxiety & Hormonal Imbalance Specialist"
               width={500}
               height={600}

@@ -11,19 +11,19 @@ const ChronicFatigueJourneySection = () => {
       month: "Month 1–2",
       title: "Hope on the Horizon",
       description: "\"I felt my energy start to build instead of crumble by the afternoon.\" Early gentle changes (nutritional shifts, targeted support, sleep tweaks) begin to restore reserves. Morning fog lifts faster, and motivation returns, even in small doses.",
-      image: "/images/pic37.png"
+      image: "/images/pic78.png"
     },
     {
       month: "Month 3–4",
       title: "Steadiness and Motivation Return",
       description: "\"I can stay present for my family, my work, and myself.\" Fatigue flares fade, brain fog thins, and you find your rhythm again. Tasks feel possible. Laughter and creativity come back.",
-      image: "/images/pic38.png"
+      image: "/images/pic79.png"
     },
     {
       month: "Month 6+",
       title: "Living Life with Energy",
       description: "\"My body and mind actually feel alive again—and I trust my strength.\" With continued care, you feel consistent energy, clear thinking, and real zest for living. Life isn't a struggle; it's something you want to join, not just survive.",
-      image: "/images/pic39.png"
+      image: "/images/pic80.png"
     }
   ]
 

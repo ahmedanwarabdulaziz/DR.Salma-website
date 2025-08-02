@@ -11,19 +11,19 @@ const MenopauseJourneySection = () => {
       month: "Month 1–2",
       title: "Gentle Relief Begins",
       description: "\"The sweats are less, my sleep is deeper, and I feel more like myself—even just a little.\" After your root-cause assessment, simple changes start calming your body and mind. Nutrition, herbal support, and gentle movement bring early wins—hope replaces dread.",
-      image: "/images/pic37.png"
+      image: "/images/pic71.png"
     },
     {
       month: "Month 3–4",
       title: "Balance Returns",
       description: "\"My moods aren't on a rollercoaster, and I have energy to enjoy my days again.\" With consistent support, your symptoms ease further: hot flashes decrease, you sleep better, and confidence grows as you learn how to steady your hormones.",
-      image: "/images/pic38.png"
+      image: "/images/pic72.png"
     },
     {
       month: "Month 6+",
       title: "Embracing Your New Beginning",
       description: "\"I've stopped worrying about my future health—I finally have tools that work.\" Life feels open again. You know how to support your body. Your mind is clearer, intimacy is easier, you trust yourself, and you step into this chapter with pride.",
-      image: "/images/pic39.png"
+      image: "/images/pic73.png"
     }
   ]
 

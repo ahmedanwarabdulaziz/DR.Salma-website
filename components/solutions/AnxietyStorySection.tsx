@@ -213,7 +213,7 @@ const AnxietyStorySection = () => {
           {/* Additional Image - Full Width */}
           <div className="relative mt-8 md:mt-12">
             <Image
-              src="/images/pic36.png"
+              src="/images/pic84.png"
               alt="Women supporting each other"
               width={1200}
               height={400}

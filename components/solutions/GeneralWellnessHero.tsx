@@ -111,7 +111,7 @@ const GeneralWellnessHero = () => {
             className="relative"
           >
             <Image
-              src="/images/pic36.png"
+              src="/images/pic91.png"
               alt="Dr. Salma - Women's Wellness Specialist"
               width={500}
               height={600}

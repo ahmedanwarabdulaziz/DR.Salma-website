@@ -111,7 +111,7 @@ const PainManagementHero = () => {
             className="relative"
           >
             <Image
-              src="/images/salma-1.png"
+              src="/images/pic90.png"
               alt="Dr. Salma - Pain Management & Acupuncture Specialist"
               width={500}
               height={600}

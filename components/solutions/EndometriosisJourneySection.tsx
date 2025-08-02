@@ -11,19 +11,19 @@ const EndometriosisJourneySection = () => {
       month: "Month 1–2",
       title: "Calming the Storm",
       description: "I finally had a few days in a row without pain dominating my life. Dr. Salma's personalized approach begins with truly understanding your story and your history. You start with gentle shifts—nutrition, targeted supports, and the first sense of control over your cycles.",
-      image: "/images/pic37.png"
+      image: "/images/pic64.png"
     },
     {
       month: "Month 3–4",
       title: "Finding Your Rhythm",
       description: "The pain is less, and I'm enjoying life—without checking the calendar first. Inflammation and flares start fading. Your pain is less intense, less frequent. You find yourself more present at work, with family, and during activities you used to avoid.",
-      image: "/images/pic38.png"
+      image: "/images/pic65.png"
     },
     {
       month: "Month 6+",
       title: "Living on Your Terms",
       description: "I can finally make plans without fear—my body is working with me. You're not just managing symptoms anymore—you're reclaiming your life. Less fatigue, more confidence, and peace of mind that you have a partner in permanent healing.",
-      image: "/images/pic39.png"
+      image: "/images/pic66.png"
     }
   ]
 

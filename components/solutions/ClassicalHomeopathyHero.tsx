@@ -111,7 +111,7 @@ const ClassicalHomeopathyHero = () => {
             className="relative"
           >
             <Image
-              src="/images/pic35.png"
+              src="/images/pic94.png"
               alt="Dr. Salma - Classical Homeopathy Specialist"
               width={500}
               height={600}

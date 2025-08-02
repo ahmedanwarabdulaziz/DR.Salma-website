@@ -53,7 +53,7 @@ const ChronicFatigueTestimonialsSection = () => {
             >
               <div className="flex items-center space-x-4 mb-6">
                 <Image
-                  src={index === 0 ? "/images/pic21.png" : "/images/pic22.png"}
+                  src={index === 0 ? "/images/pic81.png" : "/images/pic82.png"}
                   alt={`${testimonial.name}'s transformation story`}
                   width={400}
                   height={250}

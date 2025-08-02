@@ -13,7 +13,7 @@ const AnxietyTestimonialsSection = () => {
       age: 28,
       story: "I thought my anxiety was just who I was. Dr. Salma found the root cause—my hormones were out of sync. With simple changes to my routine and support I could actually stick to, I'm finally living without constant overwhelm.",
       result: "Hope's Quiet Comeback",
-      image: "/images/pic21.png"
+      image: "/images/pic88.png"
     },
     {
       name: "Kira",
@@ -21,7 +21,7 @@ const AnxietyTestimonialsSection = () => {
       age: 31,
       story: "Work stress almost broke me, but my worst days always lined up with my cycle. In just a few months, I sleep better, panic less, and feel in control—even when things get tough. Dr. Salma gave me my life back.",
       result: "Kira's New Ease",
-      image: "/images/pic22.png"
+      image: "/images/pic89.png"
     }
   ]
 

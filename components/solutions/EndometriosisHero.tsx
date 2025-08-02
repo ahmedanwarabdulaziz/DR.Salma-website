@@ -111,7 +111,7 @@ const EndometriosisHero = () => {
             className="relative"
           >
             <Image
-              src="/images/pic35.png"
+              src="/images/pic62.png"
               alt="Dr. Salma - Endometriosis Pain Management Specialist"
               width={500}
               height={600}

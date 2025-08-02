@@ -159,15 +159,15 @@ const GeneralWellnessStorySection = () => {
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="relative w-full h-[400px] rounded-3xl overflow-hidden shadow-2xl">
-                <Image
-                  src="/images/pic37.png"
-                  alt="Dr. Salma - Understanding Women's Wellness"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-              </div>
+                             <div className="relative w-full h-[400px] rounded-3xl overflow-hidden shadow-2xl">
+                 <Image
+                   src="/images/pic92.png"
+                   alt="Dr. Salma - Understanding Women's Wellness"
+                   fill
+                   className="object-cover"
+                 />
+                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+               </div>
             </motion.div>
 
             {/* Stats */}
@@ -242,14 +242,14 @@ const GeneralWellnessStorySection = () => {
               </p>
             </div>
             
-            <div className="relative h-full min-h-[300px] md:min-h-[400px] lg:min-h-[500px] mt-6 lg:mt-0">
-              <Image
-                src="/images/pic16.png"
-                alt="Dr. Salma understanding women's wellness journey"
-                width={600}
-                height={600}
-                className="w-full h-full object-cover rounded-2xl shadow-lg"
-              />
+                         <div className="relative h-full min-h-[300px] md:min-h-[400px] lg:min-h-[500px] mt-6 lg:mt-0">
+               <Image
+                 src="/images/pic16.png"
+                 alt="Dr. Salma understanding women's wellness journey"
+                 width={600}
+                 height={600}
+                 className="w-full h-full object-cover rounded-2xl shadow-lg"
+               />
               <div className="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 bg-white rounded-2xl p-4 md:p-6 shadow-lg border border-green-200">
                 <div className="flex items-center space-x-2 md:space-x-3">
                   <User className="w-6 h-6 md:w-8 md:h-8 text-green-600" />
@@ -262,15 +262,15 @@ const GeneralWellnessStorySection = () => {
             </div>
           </div>
           
-          {/* Additional Image - Full Width */}
-          <div className="relative mt-8 md:mt-12">
-            <Image
-              src="/images/pic38.png"
-              alt="Women supporting each other"
-              width={1200}
-              height={400}
-              className="w-full h-48 md:h-64 object-cover rounded-2xl shadow-lg"
-            />
+                     {/* Additional Image - Full Width */}
+           <div className="relative mt-8 md:mt-12">
+             <Image
+               src="/images/pic93.png"
+               alt="Women supporting each other"
+               width={1200}
+               height={400}
+               className="w-full h-48 md:h-64 object-cover rounded-2xl shadow-lg"
+             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent rounded-2xl"></div>
             <div className="absolute bottom-3 left-3 md:bottom-4 md:left-4 text-white">
               <p className="text-xs md:text-sm font-medium">You're not alone in your wellness journey</p>
