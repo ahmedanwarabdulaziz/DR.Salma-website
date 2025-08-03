@@ -73,6 +73,8 @@ const ContactSection = () => {
           message: ''
         })
       } else {
+        const errorData = await response.json()
+        console.error('Form submission error:', errorData)
         setSubmitStatus('error')
       }
     } catch (error) {

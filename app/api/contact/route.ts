@@ -6,6 +6,15 @@ const BREVO_API_URL = 'https://api.brevo.com/v3/smtp/email'
 
 export async function POST(request: NextRequest) {
   try {
+    // Check if API key is available
+    if (!BREVO_API_KEY) {
+      console.error('BREVO_API_KEY is not set')
+      return NextResponse.json(
+        { error: 'Email service not configured' },
+        { status: 500 }
+      )
+    }
+
     const formData = await request.json()
     
     const { name, email, phone, ageRange, hasWorkedWithNaturopath, urgencyLevel, contactMethod, message } = formData
@@ -83,6 +92,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Send notification email to Dr. Salma team
+    console.log('Sending notification email...')
     const notificationResponse = await fetch(BREVO_API_URL, {
       method: 'POST',
       headers: {
@@ -92,11 +102,13 @@ export async function POST(request: NextRequest) {
       body: JSON.stringify(emailData),
     })
 
+    console.log('Notification response status:', notificationResponse.status)
+    
     if (!notificationResponse.ok) {
       const errorData = await notificationResponse.text()
       console.error('Brevo API error (notification):', errorData)
       return NextResponse.json(
-        { error: 'Failed to send notification email' },
+        { error: `Failed to send notification email: ${notificationResponse.status}` },
         { status: 500 }
       )
     }
