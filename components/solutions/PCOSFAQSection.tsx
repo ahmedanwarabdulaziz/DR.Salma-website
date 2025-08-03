@@ -2,10 +2,12 @@
 
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Heart, ChevronDown, ChevronUp } from 'lucide-react'
+import { Heart, ChevronDown, ChevronUp, ArrowRight, Download } from 'lucide-react'
+import DownloadPopup from '@/components/DownloadPopup'
 
 const PCOSFAQSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const [isPopupOpen, setIsPopupOpen] = useState(false)
 
   const faqs = [
     {
@@ -115,7 +117,10 @@ const PCOSFAQSection = () => {
             <p className="text-gray-700 mb-6">
               We're here to help. Every question is important, and every concern matters. Dr. Salma believes in taking the time to address your specific needs and worries.
             </p>
-            <button className="btn-primary group">
+            <button 
+              onClick={() => window.location.href = '/contact'}
+              className="btn-primary group cursor-pointer"
+            >
               <span className="flex items-center">
                 Schedule a Gentle Discovery Call
                 <Heart className="w-5 h-5 ml-2 transition-transform group-hover:scale-110" />
@@ -124,6 +129,13 @@ const PCOSFAQSection = () => {
           </div>
         </motion.div>
       </div>
+
+      {/* Download Popup */}
+      <DownloadPopup
+        isOpen={isPopupOpen}
+        onClose={() => setIsPopupOpen(false)}
+        guideName="PCOS Self-Love Guide"
+      />
     </section>
   )
 }

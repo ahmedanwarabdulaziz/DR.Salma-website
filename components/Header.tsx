@@ -3,12 +3,14 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Menu, X, ChevronDown } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const router = useRouter()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -175,7 +177,10 @@ const Header = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="hidden lg:block"
           >
-            <button className="bg-gradient-to-r from-pink-600 to-pink-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+            <button 
+              onClick={() => router.push('/contact')}
+              className="bg-gradient-to-r from-pink-600 to-pink-700 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer"
+            >
               Book Consultation
             </button>
           </motion.div>
@@ -238,7 +243,13 @@ const Header = () => {
                 </div>
               ))}
               <div className="pt-4">
-                <button className="w-full bg-gradient-to-r from-pink-600 to-pink-700 text-white px-6 py-3 rounded-xl font-semibold">
+                <button 
+                  onClick={() => {
+                    router.push('/contact')
+                    setIsMenuOpen(false)
+                  }}
+                  className="w-full bg-gradient-to-r from-pink-600 to-pink-700 text-white px-6 py-3 rounded-xl font-semibold cursor-pointer"
+                >
                   Book Consultation
                 </button>
               </div>

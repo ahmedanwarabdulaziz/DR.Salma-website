@@ -4,8 +4,11 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Heart, Quote, Star } from 'lucide-react'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 const HashimotosTestimonialsSection = () => {
+  const router = useRouter()
+  
   const testimonials = [
     {
       name: "Maria",
@@ -156,7 +159,10 @@ const HashimotosTestimonialsSection = () => {
             <p className="text-gray-600 mb-6">
               Every woman's Hashimoto's journey is different, but Dr. Salma's gentle approach has helped hundreds of women reclaim their vitality. She'll meet you exactly where you are and create a plan that feels manageable and hopeful.
             </p>
-            <button className="btn-primary group">
+            <button 
+              onClick={() => router.push('/contact')}
+              className="btn-primary group cursor-pointer"
+            >
               <span className="flex items-center">
                 Start Your Transformation Story
                 <Heart className="w-5 h-5 ml-2 transition-transform group-hover:scale-110" />

@@ -5,8 +5,11 @@ import { motion } from 'framer-motion'
 import { CheckCircle, Heart, Leaf, User, ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 const AboutSection = () => {
+  const router = useRouter()
+  
   const whyChoosePoints = [
     {
       icon: <User className="w-6 h-6 text-pink-600" />,
@@ -185,7 +188,10 @@ const AboutSection = () => {
               viewport={{ once: true }}
               className="pt-6"
             >
-              <button className="bg-gradient-to-r from-pink-600 to-pink-700 text-white px-8 py-4 rounded-2xl font-semibold hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex items-center space-x-2 group">
+              <button 
+                onClick={() => router.push('/about')}
+                className="bg-gradient-to-r from-pink-600 to-pink-700 text-white px-8 py-4 rounded-2xl font-semibold hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex items-center space-x-2 group cursor-pointer"
+              >
                 <span>Learn More About Dr. Salma</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
               </button>

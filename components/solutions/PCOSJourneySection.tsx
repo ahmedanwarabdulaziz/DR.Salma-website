@@ -134,7 +134,10 @@ const PCOSJourneySection = () => {
             <p className="text-gray-600 mb-6">
               Your journey back to feeling like yourself again starts with one conversation.
             </p>
-            <button className="btn-primary group">
+            <button 
+              onClick={() => window.location.href = '/contact'}
+              className="btn-primary group cursor-pointer"
+            >
               <span className="flex items-center">
                 Begin Your Journey
                 <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />

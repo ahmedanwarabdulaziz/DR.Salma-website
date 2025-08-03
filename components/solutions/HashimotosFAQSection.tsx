@@ -2,10 +2,12 @@
 
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ChevronDown, Heart } from 'lucide-react'
+import { ChevronDown, Heart, ArrowRight, Download } from 'lucide-react'
+import DownloadPopup from '@/components/DownloadPopup'
 
 const HashimotosFAQSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const [isPopupOpen, setIsPopupOpen] = useState(false)
 
   const faqs = [
     {
@@ -109,7 +111,10 @@ const HashimotosFAQSection = () => {
             <p className="text-gray-600 mb-6">
               Dr. Salma and her team are here to answer all your questions about Hashimoto's management. No question is too small or too big—we're here to support you every step of the way.
             </p>
-            <button className="btn-primary group">
+            <button 
+              onClick={() => window.location.href = '/contact'}
+              className="btn-primary group cursor-pointer"
+            >
               <span className="flex items-center">
                 Ask Your Question
                 <ChevronDown className="w-5 h-5 ml-2 transition-transform group-hover:translate-y-1" />
@@ -118,6 +123,13 @@ const HashimotosFAQSection = () => {
           </div>
         </motion.div>
       </div>
+
+      {/* Download Popup */}
+      <DownloadPopup
+        isOpen={isPopupOpen}
+        onClose={() => setIsPopupOpen(false)}
+        guideName="Hashimoto's Hope Guide"
+      />
     </section>
   )
 }

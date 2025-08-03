@@ -4,8 +4,11 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, Heart } from 'lucide-react'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 const Hero = () => {
+  const router = useRouter()
+  
   return (
     <section className="relative bg-gradient-to-br from-white via-pink-50 to-green-50 pt-6">
       {/* Background Elements */}
@@ -62,13 +65,19 @@ const Hero = () => {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <button className="group bg-gradient-to-r from-pink-600 to-pink-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+              <button 
+                onClick={() => router.push('/contact')}
+                className="group bg-gradient-to-r from-pink-600 to-pink-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer"
+              >
                 <span className="flex items-center gap-2">
                   <span>Book Consultation</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
               </button>
-              <button className="group bg-white border-2 border-green-600 text-green-600 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:bg-green-600 hover:text-white">
+              <button 
+                onClick={() => router.push('/about')}
+                className="group bg-white border-2 border-green-600 text-green-600 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:bg-green-600 hover:text-white cursor-pointer"
+              >
                 Learn More
               </button>
             </motion.div>

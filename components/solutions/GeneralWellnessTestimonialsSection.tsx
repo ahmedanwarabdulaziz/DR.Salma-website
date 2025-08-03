@@ -145,7 +145,10 @@ const GeneralWellnessTestimonialsSection = () => {
               Your wellness partnership is unique, but you're not alone. Dr. Salma is here to guide you 
               toward the same kind of transformation these women experienced.
             </p>
-            <button className="bg-pink-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-pink-700 transition-colors duration-300">
+            <button 
+              onClick={() => window.location.href = '/contact'}
+              className="bg-pink-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-pink-700 transition-colors duration-300 cursor-pointer"
+            >
               Start Your Wellness Partnership
             </button>
           </div>

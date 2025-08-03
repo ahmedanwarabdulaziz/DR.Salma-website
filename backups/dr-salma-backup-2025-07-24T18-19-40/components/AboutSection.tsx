@@ -15,7 +15,7 @@ const AboutSection = () => {
     {
       icon: <Leaf className="w-6 h-6 text-green-600" />,
       title: "Natural Expertise:",
-      description: "Comprehensive natural therapies including homeopathy, TCM, and acupuncture for gentle, effective healing."
+      description: "Comprehensive natural therapies including homeopathy, TCM, acupuncture, botanical, nutritional and physical therapy for gentle, effective healing."
     },
     {
       icon: <Heart className="w-6 h-6 text-pink-600" />,

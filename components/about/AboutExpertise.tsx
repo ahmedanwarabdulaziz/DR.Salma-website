@@ -4,8 +4,11 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Heart, Brain, Users, Clock, Award, Leaf, Shield, Star } from 'lucide-react'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 const AboutExpertise = () => {
+  const router = useRouter()
+  
   const expertisePillars = [
     {
       icon: Shield,
@@ -126,7 +129,10 @@ const AboutExpertise = () => {
             <p className="text-gray-600 mb-6">
               Dr. Salma's unique combination of medical expertise and natural healing creates a comprehensive approach that addresses both the symptoms and root causes of women's health challenges.
             </p>
-            <button className="btn-primary group">
+            <button 
+              onClick={() => window.location.href = '/contact'}
+              className="btn-primary group cursor-pointer"
+            >
               <span className="flex items-center">
                 Book Your Consultation
                 <Award className="w-5 h-5 ml-2 transition-transform group-hover:scale-110" />

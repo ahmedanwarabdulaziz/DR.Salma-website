@@ -1,11 +1,14 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Heart, ArrowRight } from 'lucide-react'
 import ContactSection from '@/components/ContactSection'
+import DownloadPopup from '@/components/DownloadPopup'
 
 const ClassicalHomeopathyContactSection = () => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false)
+
   return (
     <section className="py-16 lg:py-20 bg-gradient-to-br from-pink-50 to-rose-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -70,7 +73,10 @@ const ClassicalHomeopathyContactSection = () => {
 
             <div className="space-y-6">
               <div className="text-center">
-                <button className="bg-pink-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-pink-700 transition-colors duration-300 flex items-center justify-center space-x-2 w-full">
+                <button 
+                  onClick={() => window.location.href = '/contact'}
+                  className="bg-pink-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-pink-700 transition-colors duration-300 flex items-center justify-center space-x-2 w-full cursor-pointer"
+                >
                   <span>Send My Message</span>
                   <ArrowRight className="w-5 h-5" />
                 </button>
@@ -79,13 +85,22 @@ const ClassicalHomeopathyContactSection = () => {
               <div className="bg-gradient-to-br from-pink-50 to-rose-50 rounded-2xl p-6 border border-pink-200/30">
                 <h4 className="font-semibold text-gray-900 mb-3">Ready to Start Your Journey?</h4>
                 <div className="space-y-3">
-                  <button className="w-full bg-white text-pink-600 border-2 border-pink-600 px-6 py-3 rounded-full font-semibold hover:bg-pink-50 transition-colors duration-300 text-sm">
+                  <button 
+                    onClick={() => window.location.href = '/contact'}
+                    className="w-full bg-white text-pink-600 border-2 border-pink-600 px-6 py-3 rounded-full font-semibold hover:bg-pink-50 transition-colors duration-300 text-sm cursor-pointer"
+                  >
                     Book Your Heart-to-Heart Consultation
                   </button>
-                  <button className="w-full bg-white text-pink-600 border-2 border-pink-600 px-6 py-3 rounded-full font-semibold hover:bg-pink-50 transition-colors duration-300 text-sm">
+                  <button 
+                    onClick={() => setIsPopupOpen(true)}
+                    className="w-full bg-white text-pink-600 border-2 border-pink-600 px-6 py-3 rounded-full font-semibold hover:bg-pink-50 transition-colors duration-300 text-sm cursor-pointer"
+                  >
                     Download: "Whole-Person Wellness Guide"
                   </button>
-                  <button className="w-full bg-white text-pink-600 border-2 border-pink-600 px-6 py-3 rounded-full font-semibold hover:bg-pink-50 transition-colors duration-300 text-sm">
+                  <button 
+                    onClick={() => window.location.href = '/contact'}
+                    className="w-full bg-white text-pink-600 border-2 border-pink-600 px-6 py-3 rounded-full font-semibold hover:bg-pink-50 transition-colors duration-300 text-sm cursor-pointer"
+                  >
                     Book Your Appointment Now
                   </button>
                 </div>
@@ -97,6 +112,13 @@ const ClassicalHomeopathyContactSection = () => {
       
       {/* Include the main ContactSection component */}
       <ContactSection />
+
+      {/* Download Popup */}
+      <DownloadPopup
+        isOpen={isPopupOpen}
+        onClose={() => setIsPopupOpen(false)}
+        guideName="Whole-Person Wellness Guide"
+      />
     </section>
   )
 }

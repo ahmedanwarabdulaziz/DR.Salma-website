@@ -9,7 +9,9 @@ const ContactSection = () => {
     name: '',
     email: '',
     phone: '',
-    consultationType: '',
+    ageRange: '',
+    hasWorkedWithNaturopath: '',
+    urgencyLevel: '',
     contactMethod: 'phone',
     message: ''
   })
@@ -20,18 +22,17 @@ const ContactSection = () => {
     "Ongoing Support & Care"
   ]
 
-  const consultationTypes = [
-    "Hormonal Health Solutions",
-    "Infertility and un-explained infertility",
-    "Energy & Wellness Optimization",
-    "Menopause & Perimenopause Support",
-    "PCOS Management",
-    "Endometriosis Pain Management",
-    "Chronic Fatigue & Energy Optimization",
-    "Anxiety Linked to Hormonal Imbalances",
-    "Pain Management (TCM/Acupuncture)",
-    "Classical Homeopathy",
-    "General Women's Wellness"
+  const ageRanges = [
+    "20-30",
+    "31-40", 
+    "41-50",
+    "51+"
+  ]
+
+  const urgencyLevels = [
+    "Within a month",
+    "Within 3 months", 
+    "Just exploring options"
   ]
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -42,10 +43,44 @@ const ContactSection = () => {
     }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
-    console.log('Form submitted:', formData)
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        setSubmitStatus('success')
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          ageRange: '',
+          hasWorkedWithNaturopath: '',
+          urgencyLevel: '',
+          contactMethod: 'phone',
+          message: ''
+        })
+      } else {
+        setSubmitStatus('error')
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -142,7 +177,9 @@ const ContactSection = () => {
               <div className="space-y-3">
                 <div className="flex items-center space-x-3">
                   <Phone className="w-5 h-5 text-pink-600" />
-                  <span className="text-gray-600">+1 (289) 218-6803</span>
+                  <a href="tel:+12892186803" className="text-gray-600 hover:text-pink-600 transition-colors duration-300">
+                    +1 (289) 218-6803
+                  </a>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="w-5 h-5 text-pink-600" />
@@ -168,7 +205,7 @@ const ContactSection = () => {
               {/* Name */}
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                  Full Name
+                  Full Name *
                 </label>
                 <input
                   type="text"
@@ -184,7 +221,7 @@ const ContactSection = () => {
               {/* Email */}
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Email Address
+                  Email Address *
                 </label>
                 <input
                   type="email"
@@ -212,21 +249,74 @@ const ContactSection = () => {
                 />
               </div>
 
-              {/* Consultation Type */}
+              {/* Age Range */}
               <div>
-                <label htmlFor="consultationType" className="block text-sm font-medium text-gray-700 mb-2">
-                  Consultation Type
+                <label htmlFor="ageRange" className="block text-sm font-medium text-gray-700 mb-2">
+                  Age Range
                 </label>
                 <select
-                  id="consultationType"
-                  name="consultationType"
-                  value={formData.consultationType}
+                  id="ageRange"
+                  name="ageRange"
+                  value={formData.ageRange}
                   onChange={handleInputChange}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"
                 >
-                  {consultationTypes.map((type, index) => (
-                    <option key={index} value={type}>
-                      {type}
+                  <option value="">Select your age range</option>
+                  {ageRanges.map((range, index) => (
+                    <option key={index} value={range}>
+                      {range}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Previous Naturopath Experience */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Have you worked with a naturopath before?
+                </label>
+                <div className="space-y-2">
+                  <label className="flex items-center space-x-2">
+                    <input
+                      type="radio"
+                      name="hasWorkedWithNaturopath"
+                      value="yes"
+                      checked={formData.hasWorkedWithNaturopath === 'yes'}
+                      onChange={handleInputChange}
+                      className="text-pink-600 focus:ring-pink-500"
+                    />
+                    <span className="text-gray-700">Yes</span>
+                  </label>
+                  <label className="flex items-center space-x-2">
+                    <input
+                      type="radio"
+                      name="hasWorkedWithNaturopath"
+                      value="no"
+                      checked={formData.hasWorkedWithNaturopath === 'no'}
+                      onChange={handleInputChange}
+                      className="text-pink-600 focus:ring-pink-500"
+                    />
+                    <span className="text-gray-700">No</span>
+                  </label>
+                </div>
+              </div>
+
+              {/* Urgency Level */}
+              <div>
+                <label htmlFor="urgencyLevel" className="block text-sm font-medium text-gray-700 mb-2">
+                  How soon are you looking to start your health journey?
+                </label>
+                <select
+                  id="urgencyLevel"
+                  name="urgencyLevel"
+                  value={formData.urgencyLevel}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+                >
+                  <option value="">Select your timeline</option>
+                  {urgencyLevels.map((level, index) => (
+                    <option key={index} value={level}>
+                      {level}
                     </option>
                   ))}
                 </select>
@@ -266,31 +356,81 @@ const ContactSection = () => {
               {/* Message */}
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  Additional Information (Optional)
+                  Share your health journey - What are you hoping to achieve?
                 </label>
                 <textarea
                   id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
-                  rows={4}
+                  rows={6}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"
-                  placeholder="Tell us about your health concerns..."
+                  placeholder="Tell me about your health concerns, what you've tried before, and what you're hoping to achieve on your wellness journey..."
                 />
+              </div>
+
+              {/* Privacy and Response Time Note */}
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <div className="flex items-start space-x-3">
+                  <div className="w-5 h-5 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div className="text-sm text-blue-800">
+                    <p className="font-medium mb-1">Your privacy is protected</p>
+                    <p className="text-blue-700">Your information is confidential and will only be used to contact you about your consultation request. We will contact you within 2 working days.</p>
+                  </div>
+                </div>
               </div>
 
               {/* Submit Button */}
               <motion.button
                 type="submit"
+                disabled={isSubmitting}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.8 }}
                 viewport={{ once: true }}
-                className="w-full bg-pink-600 text-white py-4 px-8 rounded-full font-semibold hover:bg-pink-700 transition-colors duration-300 flex items-center justify-center space-x-2 group"
+                className={`w-full py-4 px-8 rounded-full font-semibold transition-colors duration-300 flex items-center justify-center space-x-2 group ${
+                  isSubmitting 
+                    ? 'bg-gray-400 cursor-not-allowed' 
+                    : 'bg-pink-600 text-white hover:bg-pink-700'
+                }`}
               >
-                <span>Book Your Consultation</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                {isSubmitting ? (
+                  <>
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                    <span>Sending...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Book Your Consultation</span>
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                  </>
+                )}
               </motion.button>
+
+              {/* Status Messages */}
+              {submitStatus === 'success' && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-green-600 text-center p-3 bg-green-50 rounded-lg"
+                >
+                  Thank you! Your consultation request has been sent successfully. We'll contact you soon.
+                </motion.div>
+              )}
+
+              {submitStatus === 'error' && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-red-600 text-center p-3 bg-red-50 rounded-lg"
+                >
+                  Sorry, there was an error sending your request. Please try again or contact us directly.
+                </motion.div>
+              )}
             </form>
           </motion.div>
         </div>

@@ -134,7 +134,10 @@ const PainManagementJourneySection = () => {
               Dr. Salma is here to guide you every step of the way. Your personalized pain relief plan 
               awaits—let's begin your transformation from pain to possibility.
             </p>
-            <button className="bg-pink-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-pink-700 transition-colors duration-300 flex items-center space-x-2 mx-auto">
+            <button 
+              onClick={() => window.location.href = '/contact'}
+              className="bg-pink-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-pink-700 transition-colors duration-300 flex items-center space-x-2 mx-auto cursor-pointer"
+            >
               <span>Begin Your Healing Journey</span>
               <ArrowRight className="w-5 h-5" />
             </button>

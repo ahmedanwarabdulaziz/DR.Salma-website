@@ -7,16 +7,17 @@ import Image from 'next/image'
 
 const Footer = () => {
   const quickLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About Dr. Salma', href: '#about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Resources', href: '#resources' }
+    { name: 'Home', href: '/#home' },
+    { name: 'About Dr. Salma', href: '/about' },
+    { name: 'Services', href: '/#services' },
+    { name: 'Resources', href: '/#resources' }
   ]
 
   const services = [
-    { name: "Women's Health Hub", count: "10 Services", href: '#womens-health' },
-    { name: "Classical Homeopathy", count: "3 Services", href: '#homeopathy' },
-    { name: "View All Services", href: '#all-services' }
+    { name: "Hormonal Health Solutions", count: "PCOS, Thyroid, Acne", href: '/#solutions-section' },
+    { name: "Reproductive Health Care", count: "Fertility, Endometriosis, Menopause", href: '/#solutions-section' },
+    { name: "Energy & Wellness Optimization", count: "Fatigue, Anxiety, Pain Management", href: '/#solutions-section' },
+    { name: "Comprehensive Women's Care", count: "General Wellness, Homeopathy", href: '/#solutions-section' }
   ]
 
   const socialLinks = [
@@ -27,9 +28,9 @@ const Footer = () => {
   ]
 
   return (
-    <footer className="bg-white border-t border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
+    <footer className="bg-gradient-to-br from-rose-50 to-pink-50 border-t border-rose-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-16">
           
           {/* Column 1 - Dr. Salma Branding */}
           <motion.div
@@ -37,11 +38,11 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="space-y-6"
+            className="space-y-8 lg:col-span-2"
           >
             {/* Logo & Brand */}
             <div className="flex items-center space-x-4">
-              <div className="relative w-12 h-12">
+              <div className="relative w-16 h-16">
                 <Image
                   src="/images/logo.png"
                   alt="Dr. Salma Logo"
@@ -50,11 +51,11 @@ const Footer = () => {
                 />
               </div>
               <div className="flex flex-col">
-                <div className="flex items-center space-x-2">
-                  <h3 className="font-bold text-xl text-pink-600">
+                <div className="flex items-center space-x-3">
+                  <h3 className="font-bold text-2xl text-pink-600">
                     Dr.Salma
                   </h3>
-                  <div className="relative w-5 h-5">
+                  <div className="relative w-6 h-6">
                     <Image
                       src="/images/butterfly.png"
                       alt="Butterfly"
@@ -63,19 +64,19 @@ const Footer = () => {
                     />
                   </div>
                 </div>
-                <p className="text-sm text-green-600 font-medium">
+                <p className="text-sm text-green-600 font-semibold">
                   Women Ontario Hub
                 </p>
               </div>
             </div>
             
             {/* Description */}
-            <p className="text-gray-600 leading-relaxed">
-              Empowering women's health through medical expertise and natural healing. Dr. Salma provides comprehensive care that addresses both symptoms and root causes.
+            <p className="text-gray-700 leading-relaxed text-xl">
+              Where medical expertise meets natural healing. Dr. Salma provides comprehensive women's health care that addresses both symptoms and root causes with compassion and expertise.
             </p>
             
             {/* Social Media Icons */}
-            <div className="flex space-x-3">
+            <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
                 <motion.a
                   key={index}
@@ -84,7 +85,7 @@ const Footer = () => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center text-white hover:bg-pink-700 transition-colors duration-300 group"
+                  className="w-12 h-12 bg-gradient-to-r from-pink-500 to-rose-500 rounded-full flex items-center justify-center text-white hover:from-pink-600 hover:to-rose-600 transition-all duration-300 group shadow-lg hover:shadow-xl"
                   aria-label={social.platform}
                 >
                   <div className="group-hover:scale-110 transition-transform duration-300">
@@ -101,10 +102,10 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="space-y-6"
+            className="space-y-8"
           >
-            <h3 className="text-lg font-semibold text-gray-900">Quick Links</h3>
-            <ul className="space-y-3">
+            <h3 className="text-xl font-bold text-gray-800 mb-6">Quick Links</h3>
+            <ul className="space-y-4">
               {quickLinks.map((link, index) => (
                 <motion.li
                   key={index}
@@ -115,9 +116,11 @@ const Footer = () => {
                 >
                   <a
                     href={link.href}
-                    className="text-gray-600 hover:text-pink-600 transition-colors duration-300"
+                    className="text-gray-700 hover:text-pink-600 transition-colors duration-300 font-medium text-lg group"
                   >
-                    {link.name}
+                    <span className="group-hover:underline decoration-pink-300 decoration-2 underline-offset-4">
+                      {link.name}
+                    </span>
                   </a>
                 </motion.li>
               ))}
@@ -130,10 +133,10 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             viewport={{ once: true }}
-            className="space-y-6"
+            className="space-y-8"
           >
-            <h3 className="text-lg font-semibold text-gray-900">Our Services</h3>
-            <ul className="space-y-3">
+            <h3 className="text-xl font-bold text-gray-800 mb-6">Specialized Care Areas</h3>
+            <ul className="space-y-5">
               {services.map((service, index) => (
                 <motion.li
                   key={index}
@@ -144,11 +147,13 @@ const Footer = () => {
                 >
                   <a
                     href={service.href}
-                    className="text-gray-600 hover:text-pink-600 transition-colors duration-300"
+                    className="text-gray-700 hover:text-pink-600 transition-colors duration-300 group"
                   >
-                    <div className="font-medium">{service.name}</div>
+                    <div className="font-semibold text-lg group-hover:underline decoration-pink-300 decoration-2 underline-offset-4">
+                      {service.name}
+                    </div>
                     {service.count && (
-                      <div className="text-sm text-gray-500">{service.count}</div>
+                      <div className="text-sm text-gray-600 mt-1 font-medium">{service.count}</div>
                     )}
                   </a>
                 </motion.li>
@@ -162,33 +167,39 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
             viewport={{ once: true }}
-            className="space-y-6 lg:col-span-2"
+            className="space-y-8 lg:col-span-2"
           >
-            <h3 className="text-lg font-semibold text-gray-900">Contact Us</h3>
-            <div className="space-y-4">
-              <div className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-pink-600" />
+            <h3 className="text-xl font-bold text-gray-800 mb-6">Contact Us</h3>
+            <div className="space-y-6">
+              <div className="flex items-center space-x-4 group">
+                <div className="w-12 h-12 bg-gradient-to-r from-pink-100 to-rose-100 rounded-full flex items-center justify-center group-hover:from-pink-200 group-hover:to-rose-200 transition-all duration-300">
+                  <Phone className="w-6 h-6 text-pink-600" />
+                </div>
                 <a 
                   href="tel:+12892186803" 
-                  className="text-gray-600 hover:text-pink-600 transition-colors duration-300"
+                  className="text-gray-700 hover:text-pink-600 transition-colors duration-300 font-medium text-lg"
                 >
                   +1 (289) 218-6803
                 </a>
               </div>
 
-              <div className="flex items-center space-x-3">
-                <MessageCircle className="w-5 h-5 text-pink-600" />
+              <div className="flex items-center space-x-4 group">
+                <div className="w-12 h-12 bg-gradient-to-r from-pink-100 to-rose-100 rounded-full flex items-center justify-center group-hover:from-pink-200 group-hover:to-rose-200 transition-all duration-300">
+                  <MessageCircle className="w-6 h-6 text-pink-600" />
+                </div>
                 <a 
                   href="mailto:info@drsalmawomenontariohub.com" 
-                  className="text-gray-600 hover:text-pink-600 transition-colors duration-300"
+                  className="text-gray-700 hover:text-pink-600 transition-colors duration-300 font-medium text-lg"
                 >
                   info@drsalmawomenontariohub.com
                 </a>
               </div>
 
-              <div className="flex items-center space-x-3">
-                <MapPin className="w-5 h-5 text-pink-600" />
-                <span className="text-gray-600">Ontario, Canada</span>
+              <div className="flex items-center space-x-4 group">
+                <div className="w-12 h-12 bg-gradient-to-r from-pink-100 to-rose-100 rounded-full flex items-center justify-center group-hover:from-pink-200 group-hover:to-rose-200 transition-all duration-300">
+                  <MapPin className="w-6 h-6 text-pink-600" />
+                </div>
+                <span className="text-gray-700 font-medium text-lg">Ontario, Canada</span>
               </div>
             </div>
           </motion.div>
@@ -200,14 +211,14 @@ const Footer = () => {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.8 }}
           viewport={{ once: true }}
-          className="mt-12 pt-8 border-t border-gray-200"
+          className="mt-16 pt-12 border-t border-rose-200"
         >
-          <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
-            <div className="flex items-center space-x-2 text-gray-600">
-              <Heart className="w-4 h-4 text-pink-600" />
-              <span>Made with care for women's health</span>
+          <div className="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
+            <div className="flex items-center space-x-3 text-gray-700">
+              <Heart className="w-5 h-5 text-pink-600" />
+              <span className="font-medium text-lg">Made with care for women's health</span>
             </div>
-            <div className="text-gray-600 text-sm">
+            <div className="text-gray-600 text-base font-medium">
               © 2024 Dr. Salma. All rights reserved.
             </div>
           </div>

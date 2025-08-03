@@ -1,11 +1,14 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Heart, ArrowRight, Leaf } from 'lucide-react'
 import ContactSection from '@/components/ContactSection'
+import DownloadPopup from '@/components/DownloadPopup'
 
 const ChronicFatigueContactSection = () => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false)
+
   return (
     <section className="py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -30,7 +33,8 @@ const ChronicFatigueContactSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="bg-pink-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-pink-700 transition-colors duration-300 flex items-center space-x-2"
+              onClick={() => window.location.href = '/contact'}
+              className="bg-pink-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-pink-700 transition-colors duration-300 flex items-center space-x-2 cursor-pointer"
             >
               <span>Book Your Heart-to-Heart Consultation</span>
               <ArrowRight className="w-5 h-5" />
@@ -41,7 +45,8 @@ const ChronicFatigueContactSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
-              className="bg-white text-pink-600 border-2 border-pink-600 px-8 py-4 rounded-full font-semibold hover:bg-pink-50 transition-colors duration-300 flex items-center space-x-2"
+              onClick={() => setIsPopupOpen(true)}
+              className="bg-white text-pink-600 border-2 border-pink-600 px-8 py-4 rounded-full font-semibold hover:bg-pink-50 transition-colors duration-300 flex items-center space-x-2 cursor-pointer"
             >
               <span>Download: "Energy Renewal Starter Guide"</span>
               <Leaf className="w-5 h-5" />
@@ -51,6 +56,13 @@ const ChronicFatigueContactSection = () => {
 
         {/* Contact Section */}
         <ContactSection />
+
+        {/* Download Popup */}
+        <DownloadPopup
+          isOpen={isPopupOpen}
+          onClose={() => setIsPopupOpen(false)}
+          guideName="Energy Renewal Starter Guide"
+        />
         
         {/* Final Message */}
         <motion.div

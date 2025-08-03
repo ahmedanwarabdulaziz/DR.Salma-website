@@ -1,11 +1,16 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { ArrowRight, Heart, Leaf } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import DownloadPopup from '@/components/DownloadPopup'
 
 const UnexplainedInfertilityHero = () => {
+  const router = useRouter()
+  const [isPopupOpen, setIsPopupOpen] = useState(false)
+  
   return (
     <section className="relative min-h-screen overflow-hidden">
       {/* Animated Background */}
@@ -103,11 +108,17 @@ const UnexplainedInfertilityHero = () => {
               transition={{ duration: 1, delay: 1.6 }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <button className="bg-pink-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-pink-700 transition-colors duration-300 flex items-center space-x-2">
+              <button 
+                onClick={() => router.push('/contact')}
+                className="bg-pink-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-pink-700 transition-colors duration-300 flex items-center space-x-2 cursor-pointer"
+              >
                 <span>Book Your Heart-to-Heart Consultation</span>
                 <ArrowRight className="w-5 h-5" />
               </button>
-              <button className="bg-white text-pink-600 border-2 border-pink-600 px-8 py-4 rounded-full font-semibold hover:bg-pink-50 transition-colors duration-300 flex items-center space-x-2">
+              <button 
+                onClick={() => setIsPopupOpen(true)}
+                className="bg-white text-pink-600 border-2 border-pink-600 px-8 py-4 rounded-full font-semibold hover:bg-pink-50 transition-colors duration-300 flex items-center space-x-2 cursor-pointer"
+              >
                 <span>Download: "Hope for Unexplained Infertility" Guide</span>
                 <Leaf className="w-5 h-5" />
               </button>
@@ -131,6 +142,13 @@ const UnexplainedInfertilityHero = () => {
           </motion.div>
         </div>
       </div>
+
+      {/* Download Popup */}
+      <DownloadPopup
+        isOpen={isPopupOpen}
+        onClose={() => setIsPopupOpen(false)}
+        guideName="Hope for Unexplained Infertility Guide"
+      />
     </section>
   )
 }

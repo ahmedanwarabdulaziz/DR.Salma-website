@@ -4,8 +4,11 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { CheckCircle, ArrowRight } from 'lucide-react'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 const HormonalSolutionsSection = () => {
+  const router = useRouter()
+  
   const solutions = [
     {
       id: 1,
@@ -43,7 +46,7 @@ const HormonalSolutionsSection = () => {
   ]
 
   return (
-    <section className="py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-white">
+    <section id="hormonal-solutions" className="py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -109,13 +112,24 @@ const HormonalSolutionsSection = () => {
                     ))}
                   </div>
 
-                  {/* CTA - Pushed to bottom */}
-                  <div className="mt-auto">
-                    <button className="w-full bg-primary-green text-white py-3 px-4 rounded-xl font-semibold hover:bg-primary-green/90 transition-colors duration-300 flex items-center justify-center space-x-2 group/btn">
-                      <span>{solution.cta}</span>
-                      <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
-                    </button>
-                  </div>
+                                     {/* CTA - Pushed to bottom */}
+                   <div className="mt-auto">
+                     <button 
+                       onClick={() => {
+                         if (solution.title === "PCOS Management") {
+                           window.location.href = '/pcos-management'
+                         } else if (solution.title === "Hashimoto's Thyroiditis Management") {
+                           window.location.href = '/hashimotos-thyroiditis'
+                         } else if (solution.title === "Hormonal Acne Treatment") {
+                           window.location.href = '/hormonal-acne-treatment'
+                         }
+                       }}
+                       className="w-full bg-primary-green text-white py-3 px-4 rounded-xl font-semibold hover:bg-primary-green/90 transition-colors duration-300 flex items-center justify-center space-x-2 group/btn cursor-pointer"
+                     >
+                       <span>{solution.cta}</span>
+                       <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                     </button>
+                   </div>
                 </div>
               </div>
             </motion.div>
@@ -130,12 +144,15 @@ const HormonalSolutionsSection = () => {
           viewport={{ once: true }}
           className="text-center mt-12"
         >
-          <button className="btn-primary group">
-            <span className="flex items-center">
-              Book Your Hormonal Health Consultation
-              <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
-            </span>
-          </button>
+                     <button 
+             onClick={() => window.location.href = '/contact'}
+             className="btn-primary group cursor-pointer"
+           >
+             <span className="flex items-center">
+               Book Your Hormonal Health Consultation
+               <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+             </span>
+           </button>
         </motion.div>
       </div>
     </section>

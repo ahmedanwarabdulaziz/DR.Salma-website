@@ -13,7 +13,7 @@ const MenopauseDifferenceSection = () => {
     },
     {
       title: "Natural therapies proven to help",
-      description: "With hot flashes, mood, sleep, and more"
+      description: "Comprehensive natural therapies including homeopathy, TCM, acupuncture, botanical, nutritional and physical therapy for gentle, effective healing"
     },
     {
       title: "Lifestyle, nutritional, and mind-body guidance",

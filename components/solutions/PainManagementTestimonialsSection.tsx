@@ -3,8 +3,11 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Star, Quote, Heart } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 
 const PainManagementTestimonialsSection = () => {
+  const router = useRouter()
+  
   const testimonials = [
     {
       name: "Nadia",
@@ -145,7 +148,10 @@ const PainManagementTestimonialsSection = () => {
               Your pain relief journey is unique, but you're not alone. Dr. Salma is here to guide you 
               toward the same kind of transformation these women experienced.
             </p>
-            <button className="bg-pink-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-pink-700 transition-colors duration-300">
+            <button 
+              onClick={() => router.push('/contact')}
+              className="bg-pink-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-pink-700 transition-colors duration-300 cursor-pointer"
+            >
               Start Your Pain Relief Journey
             </button>
           </div>

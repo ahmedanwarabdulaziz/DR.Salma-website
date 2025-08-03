@@ -4,8 +4,11 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Heart, ArrowRight, CheckCircle } from 'lucide-react'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 const TestimonialsSection = () => {
+  const router = useRouter()
+  
   const testimonials = [
     {
       id: 1,
@@ -156,7 +159,10 @@ const TestimonialsSection = () => {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <button className="bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white font-semibold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl">
+          <button 
+            onClick={() => router.push('/contact')}
+            className="bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white font-semibold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl cursor-pointer"
+          >
             Start Your Own Success Story
           </button>
         </motion.div>

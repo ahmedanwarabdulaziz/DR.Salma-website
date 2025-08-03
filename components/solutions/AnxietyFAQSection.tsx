@@ -2,10 +2,12 @@
 
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ChevronDown, ChevronUp, Heart, ArrowRight } from 'lucide-react'
+import { ChevronDown, ChevronUp, Heart, ArrowRight, Download } from 'lucide-react'
+import DownloadPopup from '@/components/DownloadPopup'
 
 const AnxietyFAQSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const [isPopupOpen, setIsPopupOpen] = useState(false)
 
   const faqs = [
     {
@@ -115,11 +117,17 @@ const AnxietyFAQSection = () => {
                 You are not destined to live in fear or overwhelm. You deserve more than coping—you deserve to thrive, trust your mind, and feel good in your body.
               </p>
               <div className="space-y-4">
-                <button className="w-full bg-pink-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-pink-700 transition-colors duration-300 flex items-center justify-center space-x-2">
+                <button 
+                  onClick={() => window.location.href = '/contact'}
+                  className="w-full bg-pink-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-pink-700 transition-colors duration-300 flex items-center justify-center space-x-2 cursor-pointer"
+                >
                   <span>Book Your Heart-to-Heart Consultation</span>
                   <ArrowRight className="w-5 h-5" />
                 </button>
-                <button className="w-full bg-white text-pink-600 border-2 border-pink-600 px-8 py-4 rounded-full font-semibold hover:bg-pink-50 transition-colors duration-300">
+                <button 
+                  onClick={() => setIsPopupOpen(true)}
+                  className="w-full bg-white text-pink-600 border-2 border-pink-600 px-8 py-4 rounded-full font-semibold hover:bg-pink-50 transition-colors duration-300 cursor-pointer"
+                >
                   Download: "Women's Calm & Clarity Guide"
                 </button>
               </div>
@@ -127,6 +135,13 @@ const AnxietyFAQSection = () => {
           </motion.div>
         </div>
       </div>
+
+      {/* Download Popup */}
+      <DownloadPopup
+        isOpen={isPopupOpen}
+        onClose={() => setIsPopupOpen(false)}
+        guideName="Women's Calm & Clarity Guide"
+      />
     </section>
   )
 }

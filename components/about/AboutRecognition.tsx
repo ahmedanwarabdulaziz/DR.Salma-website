@@ -152,30 +152,7 @@ const AboutRecognition = () => {
           </motion.div>
         </div>
 
-        {/* Bottom Message */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="text-center mt-16"
-        >
-          <div className="bg-gradient-to-br from-pink-50 to-rose-50 rounded-3xl p-8 border border-pink-200/30 max-w-3xl mx-auto">
-            <Award className="w-12 h-12 text-primary-pink mx-auto mb-4" />
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">
-              Trust in Professional Excellence
-            </h3>
-            <p className="text-gray-600 mb-6">
-              Dr. Salma's ongoing commitment to education and professional development means you can trust that you're receiving care from a practitioner who stays at the forefront of integrative women's health.
-            </p>
-            <button className="btn-primary group">
-              <span className="flex items-center">
-                Experience Her Expertise
-                <Heart className="w-5 h-5 ml-2 transition-transform group-hover:scale-110" />
-              </span>
-            </button>
-          </div>
-        </motion.div>
+
       </div>
     </section>
   )

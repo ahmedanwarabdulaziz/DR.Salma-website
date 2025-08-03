@@ -1,11 +1,14 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Heart, ArrowRight, Download } from 'lucide-react'
 import ContactSection from '@/components/ContactSection'
+import DownloadPopup from '@/components/DownloadPopup'
 
 const UnexplainedInfertilityContactSection = () => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false)
+
   return (
     <section className="py-16 lg:py-20 bg-gradient-to-br from-pink-50 to-rose-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -33,11 +36,17 @@ const UnexplainedInfertilityContactSection = () => {
           viewport={{ once: true }}
           className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
         >
-          <button className="bg-pink-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-pink-700 transition-colors duration-300 flex items-center space-x-2">
+          <button 
+            onClick={() => window.location.href = '/contact'}
+            className="bg-pink-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-pink-700 transition-colors duration-300 flex items-center space-x-2 cursor-pointer"
+          >
             <span>Book Your Heart-to-Heart Consultation</span>
             <ArrowRight className="w-5 h-5" />
           </button>
-          <button className="bg-white text-pink-600 border-2 border-pink-600 px-8 py-4 rounded-full font-semibold hover:bg-pink-50 transition-colors duration-300 flex items-center space-x-2">
+          <button 
+            onClick={() => setIsPopupOpen(true)}
+            className="bg-white text-pink-600 border-2 border-pink-600 px-8 py-4 rounded-full font-semibold hover:bg-pink-50 transition-colors duration-300 flex items-center space-x-2 cursor-pointer"
+          >
             <span>Download: "Hope for Unexplained Infertility" Guide</span>
             <Download className="w-5 h-5" />
           </button>
@@ -61,6 +70,13 @@ const UnexplainedInfertilityContactSection = () => {
 
         {/* Contact Section */}
         <ContactSection />
+
+        {/* Download Popup */}
+        <DownloadPopup
+          isOpen={isPopupOpen}
+          onClose={() => setIsPopupOpen(false)}
+          guideName="Hope for Unexplained Infertility Guide"
+        />
       </div>
     </section>
   )

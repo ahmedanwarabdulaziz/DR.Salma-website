@@ -4,8 +4,26 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Heart, ArrowRight } from 'lucide-react'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 const SolutionsSection = () => {
+  const router = useRouter()
+  
+  // Mapping of button names to their corresponding URLs
+  const buttonToUrl = {
+    "PCOS Management": "/pcos-management",
+    "Hashimoto's Thyroiditis": "/hashimotos-thyroiditis",
+    "Hormonal Acne Treatment": "/hormonal-acne-treatment",
+    "Unexplained Infertility Solutions": "/unexplained-infertility-solutions",
+    "Endometriosis Pain Management": "/endometriosis-pain-management",
+    "Menopause & Perimenopause Support": "/menopause-perimenopause-support",
+    "Chronic Fatigue & Energy Optimization": "/chronic-fatigue-energy-optimization",
+    "Anxiety Linked to Hormonal Imbalances": "/anxiety-hormonal-imbalances",
+    "Pain Management (TCM/Acupuncture)": "/pain-management-tcm-acupuncture",
+    "General Women's Wellness": "/general-womens-wellness",
+    "Classical Homeopathy": "/classical-homeopathy"
+  }
+
   const solutions = [
     {
       id: 1,
@@ -46,7 +64,7 @@ const SolutionsSection = () => {
   ]
 
   return (
-    <section className="py-16 lg:py-20 bg-white">
+    <section id="solutions-section" className="py-16 lg:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -146,8 +164,12 @@ const SolutionsSection = () => {
                           key={buttonIndex}
                           className="w-full px-4 py-3 bg-pink-100 text-pink-700 rounded-full text-sm font-medium hover:bg-pink-200 hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer border border-pink-200 hover:border-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50 text-center"
                           onClick={() => {
-                            // Handle button click - you can add navigation or other functionality here
-                            console.log(`Clicked: ${button}`);
+                            const url = buttonToUrl[button]
+                            if (url) {
+                              router.push(url)
+                            } else {
+                              console.log(`No URL mapping found for: ${button}`)
+                            }
                           }}
                           aria-label={`Learn more about ${button}`}
                         >

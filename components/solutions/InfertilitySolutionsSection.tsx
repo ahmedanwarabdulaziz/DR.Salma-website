@@ -111,7 +111,10 @@ const InfertilitySolutionsSection = () => {
 
                   {/* CTA - Pushed to bottom */}
                   <div className="mt-auto">
-                    <button className="w-full bg-primary-green text-white py-3 px-4 rounded-xl font-semibold hover:bg-primary-green/90 transition-colors duration-300 flex items-center justify-center space-x-2 group/btn">
+                    <button 
+                      onClick={() => window.location.href = '/contact'}
+                      className="w-full bg-primary-green text-white py-3 px-4 rounded-xl font-semibold hover:bg-primary-green/90 transition-colors duration-300 flex items-center justify-center space-x-2 group/btn cursor-pointer"
+                    >
                       <span>{solution.cta}</span>
                       <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
                     </button>
@@ -130,7 +133,10 @@ const InfertilitySolutionsSection = () => {
           viewport={{ once: true }}
           className="text-center mt-12"
         >
-          <button className="btn-primary group">
+          <button 
+            onClick={() => window.location.href = '/contact'}
+            className="btn-primary group cursor-pointer"
+          >
             <span className="flex items-center">
               Book Your Appointment Now
               <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />

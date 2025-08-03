@@ -2,11 +2,13 @@
 
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ChevronDown, ChevronUp, Heart } from 'lucide-react'
+import { ChevronDown, ChevronUp, Heart, ArrowRight, Download } from 'lucide-react'
 import Image from 'next/image'
+import DownloadPopup from '@/components/DownloadPopup'
 
 const MenopauseFAQSection = () => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null)
+  const [isPopupOpen, setIsPopupOpen] = useState(false)
   const faqs = [
     {
       question: "Do I have to take hormones?",
@@ -96,13 +98,23 @@ const MenopauseFAQSection = () => {
               <p className="text-gray-600 mb-6">
                 Book a discovery call to learn how Dr. Salma can help you navigate this transition with confidence and comfort.
               </p>
-              <button className="bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105">
+              <button 
+                onClick={() => window.location.href = '/contact'}
+                className="bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 cursor-pointer"
+              >
                 Book Your Discovery Call
               </button>
             </div>
           </motion.div>
         </div>
       </div>
+
+      {/* Download Popup */}
+      <DownloadPopup
+        isOpen={isPopupOpen}
+        onClose={() => setIsPopupOpen(false)}
+        guideName="Menopause Transition Wellness Guide"
+      />
     </section>
   )
 }

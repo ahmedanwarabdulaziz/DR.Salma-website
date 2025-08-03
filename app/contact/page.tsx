@@ -86,7 +86,9 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900">Phone</h3>
-                    <p className="text-gray-600">+1 (289) 218-6803</p>
+                    <a href="tel:+12892186803" className="text-gray-600 hover:text-pink-600 transition-colors duration-300">
+                  +1 (289) 218-6803
+                </a>
                     <p className="text-sm text-gray-500">Mon-Sat: 9AM-6PM</p>
                   </div>
                 </motion.div>

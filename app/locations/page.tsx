@@ -118,7 +118,9 @@ export default function LocationsPage() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-900">Phone</h4>
-                    <p className="text-gray-600">+1 (289) 218-6803</p>
+                    <a href="tel:+12892186803" className="text-gray-600 hover:text-pink-600 transition-colors duration-300">
+                  +1 (289) 218-6803
+                </a>
                   </div>
                 </div>
 

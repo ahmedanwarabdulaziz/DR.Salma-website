@@ -142,7 +142,9 @@ const GeneralWellnessContactSection = () => {
               <div className="space-y-3">
                 <div className="flex items-center space-x-3">
                   <Phone className="w-5 h-5 text-pink-600" />
-                  <span className="text-gray-600">+1 (289) 218-6803</span>
+                  <a href="tel:+12892186803" className="text-gray-600 hover:text-pink-600 transition-colors duration-300">
+                    +1 (289) 218-6803
+                  </a>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="w-5 h-5 text-pink-600" />

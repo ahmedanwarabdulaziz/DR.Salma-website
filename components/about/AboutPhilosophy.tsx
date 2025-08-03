@@ -3,8 +3,11 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Heart, Quote, Target, Users, BookOpen, Shield } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 
 const AboutPhilosophy = () => {
+  const router = useRouter()
+  
   const treatmentPrinciples = [
     {
       icon: Users,
@@ -178,7 +181,10 @@ const AboutPhilosophy = () => {
             <p className="text-gray-600 mb-6">
               Dr. Salma's approach isn't just about treating symptoms—it's about understanding your whole health story and creating sustainable solutions that work with your body's natural healing abilities.
             </p>
-            <button className="btn-primary group">
+            <button 
+              onClick={() => window.location.href = '/contact'}
+              className="btn-primary group cursor-pointer"
+            >
               <span className="flex items-center">
                 Start Your Health Journey
                 <Heart className="w-5 h-5 ml-2 transition-transform group-hover:scale-110" />

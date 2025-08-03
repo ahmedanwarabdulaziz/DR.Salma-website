@@ -1,13 +1,17 @@
 'use client'
 
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Image from 'next/image'
 import { ArrowRight, Heart, Leaf, Sparkles } from 'lucide-react'
 import gsap from 'gsap'
+import { useRouter } from 'next/navigation'
+import DownloadPopup from '@/components/DownloadPopup'
 
 const InfertilityHero = () => {
+  const router = useRouter()
   const containerRef = useRef(null)
+  const [isPopupOpen, setIsPopupOpen] = useState(false)
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"]
@@ -159,13 +163,19 @@ const InfertilityHero = () => {
               transition={{ duration: 1, delay: 1.6 }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <button className="btn-primary group">
+              <button 
+                onClick={() => router.push('/contact')}
+                className="btn-primary group cursor-pointer"
+              >
                 <span className="flex items-center">
                   Book Your Heart-to-Heart Consultation
                   <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
                 </span>
               </button>
-              <button className="btn-secondary group">
+              <button 
+                onClick={() => setIsPopupOpen(true)}
+                className="btn-secondary group cursor-pointer"
+              >
                 <span className="flex items-center">
                   Download: "Hope for Unexplained Infertility" Guide
                   <Leaf className="w-5 h-5 ml-2 transition-transform group-hover:rotate-12" />
@@ -213,6 +223,13 @@ const InfertilityHero = () => {
           </motion.div>
         </div>
       </div>
+
+      {/* Download Popup */}
+      <DownloadPopup
+        isOpen={isPopupOpen}
+        onClose={() => setIsPopupOpen(false)}
+        guideName="Hope for Unexplained Infertility Guide"
+      />
     </section>
   )
 }

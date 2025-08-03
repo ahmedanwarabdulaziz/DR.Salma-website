@@ -4,8 +4,11 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Heart, Star, Shield, Users, Award, Sparkles, CheckCircle } from 'lucide-react'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 const PainManagementDifferenceSection = () => {
+  const router = useRouter()
+  
   const differences = [
     {
       icon: Heart,
@@ -156,7 +159,10 @@ const PainManagementDifferenceSection = () => {
               Join hundreds of women who have found lasting pain relief with Dr. Salma's 
               comprehensive approach. Your journey to pain-free living starts here.
             </p>
-            <button className="bg-pink-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-pink-700 transition-colors duration-300">
+            <button 
+              onClick={() => router.push('/contact')}
+              className="bg-pink-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-pink-700 transition-colors duration-300 cursor-pointer"
+            >
               Book Your Consultation
             </button>
           </div>

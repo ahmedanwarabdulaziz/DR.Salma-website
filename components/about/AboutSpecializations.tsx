@@ -3,8 +3,11 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Heart, Leaf, Brain, Target, Star } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 
 const AboutSpecializations = () => {
+  const router = useRouter()
+  
   const specializations = [
     {
       category: "Hormonal Health Solutions",
@@ -106,7 +109,13 @@ const AboutSpecializations = () => {
             <p className="text-gray-600 mb-6">
               Dr. Salma's specialized expertise covers the full spectrum of women's health challenges, from hormonal imbalances to reproductive health, energy optimization, and comprehensive wellness care.
             </p>
-            <button className="btn-primary group">
+            <button 
+              onClick={() => {
+                // Navigate to home page with hash fragment
+                window.location.href = '/#solutions-section'
+              }}
+              className="btn-primary group cursor-pointer"
+            >
               <span className="flex items-center">
                 Explore Your Health Options
                 <Heart className="w-5 h-5 ml-2 transition-transform group-hover:scale-110" />

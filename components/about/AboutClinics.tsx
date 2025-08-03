@@ -137,7 +137,10 @@ const AboutClinics = () => {
             <p className="text-gray-600 mb-6">
               Whether you prefer in-person consultations at Sea Meadows Rehab or the convenience of virtual care, Dr. Salma provides the same high-quality, comprehensive women's health services in a professional and comfortable environment.
             </p>
-            <button className="btn-primary group">
+            <button 
+              onClick={() => window.location.href = '/contact'}
+              className="btn-primary group cursor-pointer"
+            >
               <span className="flex items-center">
                 Book Your Appointment
                 <MapPin className="w-5 h-5 ml-2 transition-transform group-hover:scale-110" />

@@ -1,11 +1,14 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Heart, ArrowRight, Download } from 'lucide-react'
 import ContactSection from '@/components/ContactSection'
+import DownloadPopup from '@/components/DownloadPopup'
 
 const HashimotosContactSection = () => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false)
+
   return (
     <>
              <section className="py-16 lg:py-20 bg-gradient-to-br from-green-50 to-emerald-50">
@@ -71,12 +74,18 @@ const HashimotosContactSection = () => {
                 </p>
                 
                 <div className="space-y-4">
-                                     <button className="w-full bg-gradient-to-r from-primary-green to-secondary-green hover:from-secondary-green hover:to-primary-green text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2">
+                                     <button 
+                                       onClick={() => window.location.href = '/contact'}
+                                       className="w-full bg-gradient-to-r from-primary-green to-secondary-green hover:from-secondary-green hover:to-primary-green text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 cursor-pointer"
+                                     >
                      <span>Book Your Consultation</span>
                      <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                    </button>
                   
-                                     <button className="w-full bg-gradient-to-r from-primary-pink to-secondary-pink hover:from-secondary-pink hover:to-primary-pink text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2">
+                                     <button 
+                                       onClick={() => setIsPopupOpen(true)}
+                                       className="w-full bg-gradient-to-r from-primary-pink to-secondary-pink hover:from-secondary-pink hover:to-primary-pink text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 cursor-pointer"
+                                     >
                      <span>Download: "Hashimoto's Hope Guide"</span>
                      <Download className="w-5 h-5 transition-transform group-hover:scale-110" />
                    </button>
@@ -97,6 +106,13 @@ const HashimotosContactSection = () => {
       
       {/* Standalone Contact Section */}
       <ContactSection />
+
+      {/* Download Popup */}
+      <DownloadPopup
+        isOpen={isPopupOpen}
+        onClose={() => setIsPopupOpen(false)}
+        guideName="Hashimoto's Hope Guide"
+      />
     </>
   )
 }

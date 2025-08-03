@@ -2,10 +2,12 @@
 
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { ChevronDown, Heart } from 'lucide-react'
+import { ChevronDown, Heart, ArrowRight, Download } from 'lucide-react'
+import DownloadPopup from '@/components/DownloadPopup'
 
 const PainManagementFAQSection = () => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null)
+  const [isPopupOpen, setIsPopupOpen] = useState(false)
 
   const faqs = [
     {
@@ -120,12 +122,22 @@ const PainManagementFAQSection = () => {
               Dr. Salma and her team are here to answer all your questions about pain management and acupuncture. 
               Reach out for personalized guidance and support.
             </p>
-            <button className="bg-pink-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-pink-700 transition-colors duration-300">
+            <button 
+              onClick={() => window.location.href = '/contact'}
+              className="bg-pink-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-pink-700 transition-colors duration-300 cursor-pointer"
+            >
               Contact Us Today
             </button>
           </div>
         </motion.div>
       </div>
+
+      {/* Download Popup */}
+      <DownloadPopup
+        isOpen={isPopupOpen}
+        onClose={() => setIsPopupOpen(false)}
+        guideName="Gentle Relief Guide for Chronic Pain"
+      />
     </section>
   )
 }

@@ -3,8 +3,12 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Heart, Brain, Users, Clock, Award, Star } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 const AboutDifference = () => {
+  const router = useRouter()
+  
   const advantages = [
     {
       icon: Brain,
@@ -163,7 +167,10 @@ const AboutDifference = () => {
             <p className="text-gray-600 mb-6">
               Dr. Salma's unique combination of medical expertise and natural healing creates a comprehensive approach that addresses both the symptoms and root causes of women's health challenges.
             </p>
-            <button className="btn-primary group">
+            <button 
+              onClick={() => window.location.href = '/contact'}
+              className="inline-block bg-gradient-to-r from-pink-600 to-pink-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer"
+            >
               <span className="flex items-center">
                 Book Your Consultation
                 <Heart className="w-5 h-5 ml-2 transition-transform group-hover:scale-110" />
