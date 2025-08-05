@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Heart, Mail, Phone, MapPin, Facebook, Instagram, Linkedin, Youtube, MessageCircle } from 'lucide-react'
+import { Heart, Mail, Phone, MapPin, Facebook, Instagram, Linkedin, MessageCircle } from 'lucide-react'
 import Image from 'next/image'
 
 const Footer = () => {
@@ -21,10 +21,9 @@ const Footer = () => {
   ]
 
   const socialLinks = [
-    { icon: <Facebook className="w-5 h-5" />, href: '#', platform: 'Facebook' },
-    { icon: <Instagram className="w-5 h-5" />, href: '#', platform: 'Instagram' },
-    { icon: <Linkedin className="w-5 h-5" />, href: '#', platform: 'LinkedIn' },
-    { icon: <Youtube className="w-5 h-5" />, href: '#', platform: 'YouTube' }
+    { icon: <Facebook className="w-5 h-5" />, href: 'https://www.facebook.com/DrSalmaWomenOntarioHub', platform: 'Facebook' },
+    { icon: <Instagram className="w-5 h-5" />, href: 'https://www.instagram.com/dr.salma.women.ontario.hub/', platform: 'Instagram' },
+    { icon: <Linkedin className="w-5 h-5" />, href: 'https://www.linkedin.com/in/salma-elhamadan-702a0033a/', platform: 'LinkedIn' }
   ]
 
   return (
