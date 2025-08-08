@@ -14,6 +14,11 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_CA',
   },
+  icons: {
+    icon: '/images/butterfly.png',
+    shortcut: '/images/butterfly.png',
+    apple: '/images/butterfly.png',
+  },
 }
 
 export default function RootLayout({
@@ -24,7 +29,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/images/butterfly.png" />
+        <link rel="shortcut icon" href="/images/butterfly.png" />
+        <link rel="apple-touch-icon" href="/images/butterfly.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body>

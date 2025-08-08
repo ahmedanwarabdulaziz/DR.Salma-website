@@ -1,14 +1,13 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 
 const BREVO_API_KEY = process.env.BREVO_API_KEY
 const BREVO_API_URL = 'https://api.brevo.com/v3/smtp/email'
 
 export async function GET() {
   try {
-    // Check if API key is available
     if (!BREVO_API_KEY) {
       return NextResponse.json(
-        { error: 'BREVO_API_KEY is not set' },
+        { error: 'BREVO_API_KEY not configured' },
         { status: 500 }
       )
     }
@@ -21,16 +20,15 @@ export async function GET() {
       },
       to: [
         {
-          email: 'ahmedanwarabdulaziz@gmail.com',
+          email: 'info@drsalmawomenontariohub.com',
           name: 'Test Recipient'
         }
       ],
       subject: 'Test Email from Dr. Salma Website',
-      textContent: 'This is a test email to verify the Brevo API integration is working.',
-      htmlContent: '<h1>Test Email</h1><p>This is a test email to verify the Brevo API integration is working.</p>'
+      textContent: 'This is a test email to verify the Brevo API integration is working correctly.',
+      htmlContent: '<h1>Test Email</h1><p>This is a test email to verify the Brevo API integration is working correctly.</p>'
     }
 
-    console.log('Testing Brevo API...')
     const response = await fetch(BREVO_API_URL, {
       method: 'POST',
       headers: {
@@ -40,26 +38,22 @@ export async function GET() {
       body: JSON.stringify(testEmailData),
     })
 
-    console.log('Test response status:', response.status)
-    
-    if (!response.ok) {
-      const errorData = await response.text()
-      console.error('Brevo API test error:', errorData)
+    if (response.ok) {
       return NextResponse.json(
-        { error: `Brevo API test failed: ${response.status}`, details: errorData },
+        { message: 'Test email sent successfully', status: response.status },
+        { status: 200 }
+      )
+    } else {
+      const errorData = await response.text()
+      return NextResponse.json(
+        { error: `Brevo API error: ${response.status}`, details: errorData },
         { status: 500 }
       )
     }
 
-    return NextResponse.json(
-      { message: 'Test email sent successfully' },
-      { status: 200 }
-    )
-
   } catch (error) {
-    console.error('Test email error:', error)
     return NextResponse.json(
-      { error: 'Test email failed', details: error },
+      { error: 'Internal server error', details: error },
       { status: 500 }
     )
   }
