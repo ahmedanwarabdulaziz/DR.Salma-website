@@ -188,8 +188,33 @@ const ContactSection = () => {
                   <span className="text-gray-600">info@drsalmawomenontariohub.com</span>
                 </div>
                 <div className="flex items-center space-x-3">
+                  <div className="w-5 h-5 text-pink-600 flex-shrink-0">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  </div>
+                  <div className="text-gray-600">
+                    <div>Sea Meadows Rehab</div>
+                    <div>2578 Bristol Cir #20, Oakville, ON L6H 7E5</div>
+                    <a 
+                      href="https://maps.app.goo.gl/WZy7ze1LrCaazbj59" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-pink-600 hover:text-pink-700 underline"
+                    >
+                      Get Directions
+                    </a>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-3">
                   <Clock className="w-5 h-5 text-pink-600" />
-                  <span className="text-gray-600">Mon-Sat: 9AM-6PM</span>
+                  <div className="text-gray-600">
+                    <div><strong>Friday:</strong> 1–7 PM</div>
+                    <div><strong>Saturday:</strong> 11 AM–5 PM</div>
+                    <div><strong>Sunday:</strong> Closed</div>
+                    <div><strong>Monday-Thursday:</strong> 1–7 PM</div>
+                  </div>
                 </div>
               </div>
             </motion.div>

@@ -92,7 +92,7 @@ export default function LocationsPage() {
                       Canada
                     </p>
                     <a 
-                      href="https://maps.google.com/?q=2578+Bristol+Cir+%2320,+Oakville,+ON+L6H+7E5"
+                      href="https://maps.app.goo.gl/WZy7ze1LrCaazbj59"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center space-x-2 text-blue-600 hover:text-blue-700 font-medium"
@@ -140,7 +140,15 @@ export default function LocationsPage() {
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-900">Hours</h4>
-                    <p className="text-gray-600">Monday - Saturday: 9:00 AM - 6:00 PM</p>
+                    <div className="text-gray-600 space-y-1">
+                      <p><strong>Friday:</strong> 1–7 PM</p>
+                      <p><strong>Saturday:</strong> 11 AM–5 PM</p>
+                      <p><strong>Sunday:</strong> Closed</p>
+                      <p><strong>Monday:</strong> 1–7 PM</p>
+                      <p><strong>Tuesday:</strong> 1–7 PM</p>
+                      <p><strong>Wednesday:</strong> 1–7 PM</p>
+                      <p><strong>Thursday:</strong> 1–7 PM</p>
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -170,7 +178,7 @@ export default function LocationsPage() {
               {/* Quick Actions */}
               <div className="grid grid-cols-2 gap-4">
                 <a
-                  href="https://maps.google.com/?q=2578+Bristol+Cir+%2320,+Oakville,+ON+L6H+7E5"
+                  href="https://maps.app.goo.gl/WZy7ze1LrCaazbj59"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-300 flex items-center justify-center space-x-2"

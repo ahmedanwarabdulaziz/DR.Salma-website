@@ -64,11 +64,11 @@ const Header = () => {
         },
       ]
     },
+    { name: 'Blog', href: '/blog' },
     {
       name: 'Resources',
       href: '#resources',
       dropdown: [
-        { name: 'Blog', href: '/blog' },
         { name: 'Patient Resources', href: '/patient-resources' },
         { name: 'FAQ', href: '/faq' },
       ]

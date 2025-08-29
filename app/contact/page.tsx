@@ -89,7 +89,12 @@ export default function ContactPage() {
                     <a href="tel:+12892186803" className="text-gray-600 hover:text-pink-600 transition-colors duration-300">
                   +1 (289) 218-6803
                 </a>
-                    <p className="text-sm text-gray-500">Mon-Sat: 9AM-6PM</p>
+                    <div className="text-sm text-gray-500 space-y-1">
+                      <div><strong>Friday:</strong> 1–7 PM</div>
+                      <div><strong>Saturday:</strong> 11 AM–5 PM</div>
+                      <div><strong>Sunday:</strong> Closed</div>
+                      <div><strong>Monday-Thursday:</strong> 1–7 PM</div>
+                    </div>
                   </div>
                 </motion.div>
 
@@ -124,8 +129,17 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900">Location</h3>
-                    <p className="text-gray-600">Ontario, Canada</p>
-                    <p className="text-sm text-gray-500">Serving women across Ontario</p>
+                    <p className="text-gray-600">Sea Meadows Rehab</p>
+                    <p className="text-gray-600">2578 Bristol Cir #20, Oakville, ON L6H 7E5</p>
+                    <a 
+                      href="https://maps.app.goo.gl/WZy7ze1LrCaazbj59" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-blue-600 hover:text-blue-700 underline text-sm"
+                    >
+                      Get Directions
+                    </a>
+                    <p className="text-sm text-gray-500 mt-1">Serving women across Ontario</p>
                   </div>
                 </motion.div>
               </div>

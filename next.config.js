@@ -8,6 +8,16 @@ const nextConfig = {
         port: '3000',
         pathname: '/images/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'images.ctfassets.net',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'downloads.ctfassets.net',
+        pathname: '/**',
+      },
     ],
   },
   webpack: (config, { isServer }) => {
